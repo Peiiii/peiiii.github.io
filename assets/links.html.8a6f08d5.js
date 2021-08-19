@@ -1,1 +1,0 @@
-const e={key:"v-35162c79",path:"/links.html",title:"相关链接",lang:"zh-CN",frontmatter:{title:"相关链接"},excerpt:"",headers:[{level:3,title:"个人",slug:"个人",children:[]},{level:3,title:"媒体",slug:"媒体",children:[]}],filePathRelative:"links.md",git:{updatedTime:162936043e4,contributors:[]}};export{e as data};

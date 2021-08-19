@@ -1,1 +1,0 @@
-const e={key:"v-8daa1a0e",path:"/",title:"",lang:"zh-CN",frontmatter:{home:!0,heroImage:"/egg.png",heroText:"Peiiii",tagline:"文档、笔记、博客",actionText:"进入笔记 →",actionLink:"/guide/"},excerpt:"",headers:[{level:2,title:"关于文档笔记",slug:"关于文档笔记",children:[]}],filePathRelative:"README.md",git:{updatedTime:162936043e4,contributors:[]}};export{e as data};
