@@ -1,1 +1,0 @@
-const e={key:"v-7573f888",path:"/os/kubernetes/dashboard.html",title:"Dashboard",lang:"zh-CN",frontmatter:{title:"Dashboard"},excerpt:"",headers:[{level:2,title:"安装",slug:"安装",children:[]},{level:2,title:"权限",slug:"权限",children:[]}],filePathRelative:"os/kubernetes/dashboard.md",git:{updatedTime:1629366189e3,contributors:[]}};export{e as data};
