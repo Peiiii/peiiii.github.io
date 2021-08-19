@@ -1,0 +1,1 @@
+import{o as a,c as e,a as r,e as s}from"./app.7573c5b1.js";const n={},t={id:"算法相关文档",tabindex:"-1"},d=[r("a",{class:"header-anchor",href:"#算法相关文档","aria-hidden":"true"},"#",-1),s(" 算法相关文档")];n.render=function(r,s){return a(),e("h1",t,d)};export{n as default};

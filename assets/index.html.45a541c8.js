@@ -1,1 +1,0 @@
-import{o as a,c as e,a as r,e as s}from"./app.e2a15844.js";const n={},t={id:"后端相关文档",tabindex:"-1"},d=[r("a",{class:"header-anchor",href:"#后端相关文档","aria-hidden":"true"},"#",-1),s(" 后端相关文档")];n.render=function(r,s){return a(),e("h1",t,d)};export{n as default};
