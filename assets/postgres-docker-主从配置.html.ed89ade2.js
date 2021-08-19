@@ -1,0 +1,1 @@
+const e={key:"v-2481566c",path:"/devops/postgresql/postgres-docker-%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE.html",title:"postgres-docker主从集群配置",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],filePathRelative:"devops/postgresql/postgres-docker-主从配置.md",git:{updatedTime:1629367195e3,contributors:[]}};export{e as data};

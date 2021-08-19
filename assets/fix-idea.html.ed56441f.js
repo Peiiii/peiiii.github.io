@@ -1,1 +1,0 @@
-const e={key:"v-8ca778a0",path:"/devops/manjaro/fix-idea.html",title:"处理 IDEA",lang:"zh-CN",frontmatter:{title:"处理 IDEA"},excerpt:"",headers:[{level:2,title:"输入法光标不跟随",slug:"输入法光标不跟随",children:[]}],filePathRelative:"devops/manjaro/fix-idea.md",git:{updatedTime:1629367137e3,contributors:[]}};export{e as data};

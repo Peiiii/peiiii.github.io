@@ -1,0 +1,1 @@
+const t={key:"v-06198984",path:"/frontend/",title:"前端相关文档",lang:"zh-CN",frontmatter:{},excerpt:"",headers:[],filePathRelative:"frontend/README.md",git:{updatedTime:1629367195e3,contributors:[]}};export{t as data};

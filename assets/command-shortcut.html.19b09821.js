@@ -1,1 +1,0 @@
-const t={key:"v-79750e9d",path:"/devops/linux/command-shortcut.html",title:"命令行快捷键",lang:"zh-CN",frontmatter:{title:"命令行快捷键"},excerpt:"",headers:[],filePathRelative:"devops/linux/command-shortcut.md",git:{updatedTime:1629367137e3,contributors:[]}};export{t as data};

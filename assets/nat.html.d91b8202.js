@@ -1,0 +1,1 @@
+import{o as a,c as e,F as r,a as s,e as n}from"./app.e2a15844.js";const t={},d=s("h2",{id:"介绍",tabindex:"-1"},[s("a",{class:"header-anchor",href:"#介绍","aria-hidden":"true"},"#"),n(" 介绍")],-1),o=s("p",null,"NAT（Network Address Translation），网络地址转换。",-1);t.render=function(s,n){return a(),e(r,null,[d,o],64)};export{t as default};
