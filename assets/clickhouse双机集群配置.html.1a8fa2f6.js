@@ -1,0 +1,1 @@
+import{o as a,c as e,a as r,e as s}from"./app.17889384.js";const c={},o={id:"clickhouse双机集群配置",tabindex:"-1"},i=[r("a",{class:"header-anchor",href:"#clickhouse双机集群配置","aria-hidden":"true"},"#",-1),s(" clickhouse双机集群配置")];c.render=function(r,s){return a(),e("h1",o,i)};export{c as default};
