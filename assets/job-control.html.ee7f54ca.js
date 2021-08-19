@@ -1,0 +1,1 @@
+const e={key:"v-8abdd640",path:"/devops/linux/job-control.html",title:"作业控制",lang:"zh-CN",frontmatter:{title:"作业控制"},excerpt:"",headers:[{level:2,title:"介绍",slug:"介绍",children:[]},{level:2,title:"步骤",slug:"步骤",children:[]}],filePathRelative:"devops/linux/job-control.md",git:{updatedTime:1629366962e3,contributors:[]}};export{e as data};
