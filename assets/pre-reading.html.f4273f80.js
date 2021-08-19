@@ -1,0 +1,1 @@
+const e={key:"v-cc0cc4a0",path:"/pre-reading.html",title:"说明",lang:"zh-CN",frontmatter:{title:"说明"},excerpt:"",headers:[{level:2,title:"个人网站",slug:"个人网站",children:[]},{level:2,title:"关于我",slug:"关于我",children:[]},{level:2,title:"关于文档",slug:"关于文档",children:[]}],filePathRelative:"pre-reading.md",git:{updatedTime:1629359471e3,contributors:[]}};export{e as data};
