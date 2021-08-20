@@ -2,11 +2,18 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2019-05-30T00:00:00.000Z</updated>
+    <updated>2021-08-20T21:23:17.453Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[测试博客]]></title>
+        <id>测试博客</id>
+        <link href="https://p.eiooie.com/blog/2021/08/20/测试博客"/>
+        <updated>2021-08-20T21:23:17.453Z</updated>
+        <summary type="html"><![CDATA[现在是凌晨5点，我还没睡]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>welcome</id>
