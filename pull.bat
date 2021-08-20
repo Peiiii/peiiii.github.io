@@ -1,1 +1,1 @@
-git pull git@github.com:peiiii/peiiii.github.io.git master
+git pull --rebase git@github.com:peiiii/peiiii.github.io.git master
