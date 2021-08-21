@@ -28,7 +28,7 @@ jobs:
     needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
-      - name: git-sync 2
+      - name: git-sync
         uses: wei/git-sync@v3
         with:
           source_repo: "git@github.com:Peiiii/peiiii.github.io.git"
@@ -41,7 +41,7 @@ jobs:
     needs: sync
     runs-on: ubuntu-latest
     steps:
-      - name: Update Gitee Pages 
+      - name: Update Gitee Pages 2
         uses: yanglbme/gitee-pages-action@main
         with:
           # 注意替换为你的 Gitee 用户名
