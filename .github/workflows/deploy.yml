@@ -36,7 +36,7 @@ jobs:
         # 来源仓库
         source-repo: "https://github.com/Peiiii/peiiii.github.io.git"
         # 目标仓库
-        destination-repo: "https://gitee.com/peiiii/peiiii.git"
+        destination-repo: "git@gitee.com:peiiii/peiiii.git"
         
   reload-pages:
     needs: sync
