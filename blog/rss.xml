@@ -4,9 +4,16 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Sat, 21 Aug 2021 07:14:36 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 21 Aug 2021 08:24:26 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[零成本快速网站搭建指南]]></title>
+            <link>https://p.eiooie.com/blog/2021/08/21/零成本快速网站搭建指南</link>
+            <guid>零成本快速网站搭建指南</guid>
+            <pubDate>Sat, 21 Aug 2021 08:24:26 GMT</pubDate>
+            <description><![CDATA[个人网站建站方法：]]></description>
+        </item>
         <item>
             <title><![CDATA[这是一条测试博客]]></title>
             <link>https://p.eiooie.com/blog/hola</link>
