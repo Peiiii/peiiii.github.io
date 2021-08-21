@@ -4,16 +4,9 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Fri, 20 Aug 2021 21:23:17 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 May 2019 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
-        <item>
-            <title><![CDATA[测试博客]]></title>
-            <link>https://p.eiooie.com/blog/2021/08/20/测试博客</link>
-            <guid>测试博客</guid>
-            <pubDate>Fri, 20 Aug 2021 21:23:17 GMT</pubDate>
-            <description><![CDATA[现在是凌晨5点，我还没睡]]></description>
-        </item>
         <item>
             <title><![CDATA[Welcome]]></title>
             <link>https://p.eiooie.com/blog/welcome</link>
