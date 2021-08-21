@@ -25,7 +25,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
   sync: #同步到gitee仓库
-    needs: deploy
+    needs: build-and-deploy
     runs-on: ubuntu-latest
     steps:
     - name: Sync to Gitee
