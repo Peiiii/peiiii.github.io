@@ -26,17 +26,16 @@ jobs:
 
   sync: #同步到gitee仓库
     needs: build-and-deploy
-    runs-on: ubuntu-latest
+     runs-on: ubuntu-latest
     steps:
-    - name: Sync to Gitee 2
-      uses: wearerequired/git-mirror-action@master
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      with:
-        # 来源仓库
-        source-repo: "https://github.com/Peiiii/peiiii.github.io.git"
-        # 目标仓库
-        destination-repo: "git@gitee.com:peiiii/peiiii.git"
+      - name: git-sync
+        uses: wei/git-sync@v3
+        with:
+          source_repo: "git@github.com:Peiiii/peiiii.github.io.git"
+          source_branch: "gh-pages"
+          destination_repo: "git@gitee.com:peiiii/peiiii.git"
+          destination_branch: "gh-pages"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} # optional
         
   reload-pages:
     needs: sync
