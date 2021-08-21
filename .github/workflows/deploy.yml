@@ -42,7 +42,7 @@ jobs:
     needs: sync
     runs-on: ubuntu-latest
     steps:
-      - name: Build Gitee Pages
+      - name: Update Gitee Pages 
         uses: yanglbme/gitee-pages-action@main
         with:
           # 注意替换为你的 Gitee 用户名
