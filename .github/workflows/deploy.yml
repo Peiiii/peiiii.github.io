@@ -26,7 +26,7 @@ jobs:
 
   sync: #同步到gitee仓库
     needs: build-and-deploy
-     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: git-sync
         uses: wei/git-sync@v3
