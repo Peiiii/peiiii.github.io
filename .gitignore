@@ -7,7 +7,7 @@
 # Generated files
 .docusaurus
 .cache-loader
-
+.codesandbox
 # Misc
 .DS_Store
 .env.local
