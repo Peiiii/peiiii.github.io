@@ -12,10 +12,7 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "peiiii", // Usually your GitHub org/user name.
   projectName: "peiiii.github.io", // Usually your repo name.
-  i18n: {
-    defaultLocale: "zh-cn",
-    locales: ["en", "zh-cn"]
-  },
+
   themeConfig: {
     navbar: {
       title: "pEIIII's websITE",
