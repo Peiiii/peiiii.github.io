@@ -30,10 +30,7 @@ module.exports = {
         { to: "/blog", label: "博客", position: "left" },
         { to: "/about", label: "关于", position: "left" },
         { to: "/more", label: "更多", position: "left" },
-        {
-          type: "localeDropdown",
-          position: "left"
-        },
+
         {
           href: "https://github.com/peiiii/peiiii.github.io",
           label: "GitHub",
