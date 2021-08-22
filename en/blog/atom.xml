@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://p.eiooie.com/en/blog</id>
+    <title>pEIIII's websITE Blog</title>
+    <updated>2021-08-21T08:24:26.514Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://p.eiooie.com/en/blog"/>
+    <subtitle>pEIIII's websITE Blog</subtitle>
+    <icon>https://p.eiooie.com/en/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[零成本快速网站搭建指南]]></title>
+        <id>零成本快速网站搭建指南</id>
+        <link href="https://p.eiooie.com/en/blog/2021/08/21/零成本快速网站搭建指南"/>
+        <updated>2021-08-21T08:24:26.514Z</updated>
+        <summary type="html"><![CDATA[从大二或大三开始，我就一直执著与搭建自己的个人网站，其间尝试了许多方法，也走了非常多的弯路，今天我把我所积累的知识记录于此。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[这是一条测试博客]]></title>
+        <id>hola</id>
+        <link href="https://p.eiooie.com/en/blog/hola"/>
+        <updated>2021-08-21T07:14:36.133Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>welcome</id>
+        <link href="https://p.eiooie.com/en/blog/welcome"/>
+        <updated>2019-05-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello]]></title>
+        <id>hello-world</id>
+        <link href="https://p.eiooie.com/en/blog/hello-world"/>
+        <updated>2019-05-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to this blog. This blog is created with Docusaurus 2.]]></summary>
+    </entry>
+</feed>
