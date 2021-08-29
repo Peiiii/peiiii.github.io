@@ -28,11 +28,12 @@ module.exports = {
           label: "文档"
         },
         { to: "/blog", label: "博客", position: "left" },
+        { to: "/readings", label: "阅读", position: "left" },
         { to: "/about", label: "关于", position: "left" },
         { to: "/more", label: "更多", position: "left" },
 
         {
-          href: "https://github.com/peiiii/peiiii.github.io",
+          to: "https://github.com/peiiii/peiiii.github.io",
           label: "GitHub",
           position: "right"
         }
