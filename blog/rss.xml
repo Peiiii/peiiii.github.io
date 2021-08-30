@@ -4,9 +4,16 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Mon, 30 Aug 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 01 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[成功方法论]]></title>
+            <link>https://p.eiooie.com/blog/2021/09/01/成功方法论</link>
+            <guid>成功方法论</guid>
+            <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[成功方法论]]></description>
+        </item>
         <item>
             <title><![CDATA[全新生活空间设计]]></title>
             <link>https://p.eiooie.com/blog/2021/08/30/全新生活空间设计</link>
