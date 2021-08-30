@@ -2,11 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2021-08-29T00:00:00.000Z</updated>
+    <updated>2021-08-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[如何制定计划？]]></title>
+        <id>如何制定计划？</id>
+        <link href="https://p.eiooie.com/blog/2021/08/30/如何制定计划？"/>
+        <updated>2021-08-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[时间在一点一点的流逝，但你的众多任务却进展缓慢，甚至停滞不前。你感到彷徨，没有充实感。]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[信息源]]></title>
         <id>信息源</id>
