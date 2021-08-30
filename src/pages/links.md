@@ -29,6 +29,8 @@ title: 链接
 - [v2ex](https://www.v2ex.com/)
 - [Hacker News](https://news.ycombinator.com/)
 - [Info Q](https://www.infoq.cn/)
+- [thoughtworks-最前沿技术](https://www.thoughtworks.com/)
+- [Github top stars](https://github.com/search?q=stars:%3E1&s=stars&type=Repositories)
 
 ### 博客
 
@@ -37,3 +39,8 @@ title: 链接
 ### 其它
 
 - [少数派](https://sspai.com/)
+
+### 信息聚合
+
+- [panda](https://app.usepanda.com/)
+  - 一个超棒的自定义信息聚合(rss feed)平台
