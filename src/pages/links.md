@@ -1,6 +1,6 @@
 ---
-title: 更多
-description: 我的更多信息
+title: 链接
+description: 连接
 hide_table_of_contents: true
 ---
 
