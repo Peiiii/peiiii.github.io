@@ -2,11 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2021-08-21T08:24:26.514Z</updated>
+    <updated>2021-08-29T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[信息源]]></title>
+        <id>信息源</id>
+        <link href="https://p.eiooie.com/blog/2021/08/29/信息源"/>
+        <updated>2021-08-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[- 在你的眼前有无数条道路，由于信息有限你能看见的只是少数几条。在眼前有许多种选择，但大多数都被一团迷雾所遮挡，拨开迷雾才能看见隐藏的选择。这团迷雾就是信息差（认知差）。]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[零成本快速网站搭建指南]]></title>
         <id>零成本快速网站搭建指南</id>
