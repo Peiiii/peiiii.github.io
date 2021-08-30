@@ -8,18 +8,25 @@
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
+            <title><![CDATA[全新生活空间设计]]></title>
+            <link>https://p.eiooie.com/blog/2021/08/30/全新生活空间设计</link>
+            <guid>全新生活空间设计</guid>
+            <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[面向未来的全新一代生活空间]]></description>
+        </item>
+        <item>
             <title><![CDATA[如何制定计划？]]></title>
             <link>https://p.eiooie.com/blog/2021/08/30/如何制定计划？</link>
             <guid>如何制定计划？</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[时间在一点一点的流逝，但你的众多任务却进展缓慢，甚至停滞不前。你感到彷徨，没有充实感。]]></description>
+            <description><![CDATA[如何制定计划？]]></description>
         </item>
         <item>
             <title><![CDATA[信息源]]></title>
             <link>https://p.eiooie.com/blog/2021/08/29/信息源</link>
             <guid>信息源</guid>
             <pubDate>Sun, 29 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[- 在你的眼前有无数条道路，由于信息有限你能看见的只是少数几条。在眼前有许多种选择，但大多数都被一团迷雾所遮挡，拨开迷雾才能看见隐藏的选择。这团迷雾就是信息差（认知差）。]]></description>
+            <description><![CDATA[信息源的重要性]]></description>
         </item>
         <item>
             <title><![CDATA[零成本快速网站搭建指南]]></title>
