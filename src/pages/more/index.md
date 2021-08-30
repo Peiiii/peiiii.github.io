@@ -4,7 +4,7 @@ description: 我的更多信息
 hide_table_of_contents: true
 ---
 
-# 链接
+### 个人链接
 
 - [个人网站](https://p.eiooie.com)
 - [cloudos](https://eiooie.com)
@@ -13,8 +13,29 @@ hide_table_of_contents: true
 
 ### 媒体
 
+#### 主要
+
 - [36kr](https://36kr.com/)
+- [知乎](https://www.zhihu.com/)
 - [澎湃新闻](https://www.thepaper.cn/)
 - [FT 中文网](https://ftchinese.com/)
-- [v2ex](https://www.v2ex.com/)
+
+#### 数据资讯
+
+- [虎嗅](https://www.huxiu.com/)
+- [人人都是产品经理](http://www.woshipm.com/)
 - [IT 桔子](https://www.itjuzi.com/)
+
+#### 技术
+
+- [v2ex](https://www.v2ex.com/)
+- [Hacker News](https://news.ycombinator.com/)
+- [Info Q](https://www.infoq.cn/)
+
+#### 博客
+
+- [阮一峰](http://www.ruanyifeng.com/)
+
+#### 其它
+
+- [少数派](https://sspai.com/)
