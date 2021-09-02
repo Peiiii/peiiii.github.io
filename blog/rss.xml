@@ -4,9 +4,16 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Wed, 01 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 02 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[完美生活]]></title>
+            <link>https://p.eiooie.com/blog/2021/09/02/完美生活</link>
+            <guid>完美生活</guid>
+            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[完美的生活是怎样的？]]></description>
+        </item>
         <item>
             <title><![CDATA[个人数字空间]]></title>
             <link>https://p.eiooie.com/blog/2021/09/01/个人数字空间</link>
