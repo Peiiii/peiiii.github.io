@@ -1248,6 +1248,14 @@ class PrecacheController {
         return this._urlsToCacheKeys.get(urlObject.href);
     }
     /**
+     * @param {string} url A cache key whose SRI you want to look up.
+     * @return {string} The subresource integrity associated with the cache key,
+     * or undefined if it's not set.
+     */
+    getIntegrityForCacheKey(cacheKey) {
+        return this._cacheKeysToIntegrities.get(cacheKey);
+    }
+    /**
      * This acts as a drop-in replacement for
      * [`cache.match()`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match)
      * with the following differences:
@@ -1423,7 +1431,8 @@ class PrecacheRoute extends workbox_routing_Route_js__WEBPACK_IMPORTED_MODULE_2_
             for (const possibleURL of (0,_utils_generateURLVariations_js__WEBPACK_IMPORTED_MODULE_3__.generateURLVariations)(request.url, options)) {
                 const cacheKey = urlsToCacheKeys.get(possibleURL);
                 if (cacheKey) {
-                    return { cacheKey };
+                    const integrity = precacheController.getIntegrityForCacheKey(cacheKey);
+                    return { cacheKey, integrity };
                 }
             }
             if (true) {
@@ -1505,7 +1514,8 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
     constructor(options = {}) {
         options.cacheName = workbox_core_private_cacheNames_js__WEBPACK_IMPORTED_MODULE_1__.cacheNames.getPrecacheName(options.cacheName);
         super(options);
-        this._fallbackToNetwork = options.fallbackToNetwork === false ? false : true;
+        this._fallbackToNetwork =
+            options.fallbackToNetwork === false ? false : true;
         // Redirected responses cannot be used to satisfy a navigation request, so
         // any redirected response must be "copied" rather than cloned, so the new
         // response doesn't contain the `redirected` flag. See:
@@ -1521,28 +1531,49 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
      */
     async _handle(request, handler) {
         const response = await handler.cacheMatch(request);
-        if (!response) {
-            // If this is an `install` event then populate the cache. If this is a
-            // `fetch` event (or any other event) then respond with the cached
-            // response.
-            if (handler.event && handler.event.type === 'install') {
-                return await this._handleInstall(request, handler);
-            }
-            return await this._handleFetch(request, handler);
+        if (response) {
+            return response;
         }
-        return response;
+        // If this is an `install` event for an entry that isn't already cached,
+        // then populate the cache.
+        if (handler.event && handler.event.type === 'install') {
+            return await this._handleInstall(request, handler);
+        }
+        // Getting here means something went wrong. An entry that should have been
+        // precached wasn't found in the cache.
+        return await this._handleFetch(request, handler);
     }
     async _handleFetch(request, handler) {
         let response;
-        // Fall back to the network if we don't have a cached response
-        // (perhaps due to manual cache cleanup).
+        const params = (handler.params || {});
+        // Fall back to the network if we're configured to do so.
         if (this._fallbackToNetwork) {
             if (true) {
                 workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.warn(`The precached response for ` +
                     `${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url)} in ${this.cacheName} was not ` +
-                    `found. Falling back to the network instead.`);
+                    `found. Falling back to the network.`);
             }
-            response = await handler.fetch(request);
+            const integrityInManifest = params.integrity;
+            const integrityInRequest = request.integrity;
+            const noIntegrityConflict = !integrityInRequest || integrityInRequest === integrityInManifest;
+            response = await handler.fetch(new Request(request, {
+                integrity: integrityInRequest || integrityInManifest,
+            }));
+            // It's only "safe" to repair the cache if we're using SRI to guarantee
+            // that the response matches the precache manifest's expectations,
+            // and there's either a) no integrity property in the incoming request
+            // or b) there is an integrity, and it matches the precache manifest.
+            // See https://github.com/GoogleChrome/workbox/issues/2858
+            if (integrityInManifest && noIntegrityConflict) {
+                this._useDefaultCacheabilityPluginIfNeeded();
+                const wasCached = await handler.cachePut(request, response.clone());
+                if (true) {
+                    if (wasCached) {
+                        workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`A response for ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url)} ` +
+                            `was used to "repair" the precache.`);
+                    }
+                }
+            }
         }
         else {
             // This shouldn't normally happen, but there are edge cases:
@@ -1553,17 +1584,11 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
             });
         }
         if (true) {
-            // Params in handlers is type any, can't change right now.
-            // eslint-disable-next-line
-            const cacheKey = handler.params && handler.params.cacheKey ||
-                await handler.getCacheKey(request, 'read');
+            const cacheKey = params.cacheKey || (await handler.getCacheKey(request, 'read'));
             // Workbox is going to handle the route.
             // print the routing details to the console.
-            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`Precaching is responding to: ` +
-                (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url));
-            // cacheKey is type any, can't change right now.
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`Serving the precached url: ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(cacheKey.url)}`);
+            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`Precaching is responding to: ` + (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url));
+            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`Serving the precached url: ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(cacheKey instanceof Request ? cacheKey.url : cacheKey)}`);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`View request details here.`);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(request);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupEnd();
@@ -1649,12 +1674,12 @@ PrecacheStrategy.defaultPrecacheCacheabilityPlugin = {
             return null;
         }
         return response;
-    }
+    },
 };
 PrecacheStrategy.copyRedirectedCacheableResponsesPlugin = {
     async cacheWillUpdate({ response }) {
         return response.redirected ? await (0,workbox_core_copyResponse_js__WEBPACK_IMPORTED_MODULE_0__.copyResponse)(response) : response;
-    }
+    },
 };
 
 
@@ -2159,10 +2184,13 @@ class PrecacheCacheKeyPlugin {
     constructor({ precacheController }) {
         this.cacheKeyWillBeUsed = async ({ request, params, }) => {
             // Params is type any, can't change right now.
-            // eslint-disable-next-line
-            const cacheKey = params && params.cacheKey ||
+            /* eslint-disable */
+            const cacheKey = (params === null || params === void 0 ? void 0 : params.cacheKey) ||
                 this._precacheController.getCacheKeyForURL(request.url);
-            return cacheKey ? new Request(cacheKey) : request;
+            /* eslint-enable */
+            return cacheKey
+                ? new Request(cacheKey, { headers: request.headers })
+                : request;
         };
         this._precacheController = precacheController;
     }
@@ -4026,6 +4054,14 @@ class StrategyHandler {
                     method: effectiveRequest.method,
                 });
             }
+            // See https://github.com/GoogleChrome/workbox/issues/2818
+            const vary = response.headers.get('Vary');
+            if (vary) {
+                workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_5__.logger.debug(`The response for ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_4__.getFriendlyURL)(effectiveRequest.url)} ` +
+                    `has a 'Vary: ${vary}' header. ` +
+                    `Consider setting the {ignoreVary: true} option on your strategy ` +
+                    `to ensure cache matching and deletion works as expected.`);
+            }
         }
         if (!response) {
             if (true) {
@@ -4443,7 +4479,7 @@ function getPossibleURLs(url) {
 (async () => {
   const params = parseSwParams();
 
-  const precacheManifest = [{"revision":"4fb284ec356623659a6608e4ee06f241","url":"404.html"},{"revision":"461e18ff60c143405359bf4a21aebd1c","url":"about/index.html"},{"revision":"96c2a5d74e54ee5989deb805dd07d4f4","url":"admin/index.html"},{"revision":"40ef2b1748e3c271fa44002caf0dccd8","url":"assets/css/styles.2f28ffe5.css"},{"revision":"7960fef33a878a6c86d804988d5c1715","url":"assets/js/01a85c17.e5d1cb85.js"},{"revision":"3d333676085033cef171175eed358ce7","url":"assets/js/031793e1.1b33a602.js"},{"revision":"71ee5e91bbe41f51c752b75a3af7c0b9","url":"assets/js/06f8edbc.a8fda9ef.js"},{"revision":"b81546ff4e20de829d80c04b9ce3e368","url":"assets/js/0e384e19.44410194.js"},{"revision":"1de08718e17ec959c73eca1664eaada9","url":"assets/js/134049f5.648094d4.js"},{"revision":"b3c62c3384a727e87e94bf86bf87dc93","url":"assets/js/17896441.6fa58d1f.js"},{"revision":"b0f09b19a7dc3961b56cc637a2fabc93","url":"assets/js/18c41134.a2c0e76f.js"},{"revision":"21364e12f999e60d8f17dc552bb7e9e0","url":"assets/js/198089f0.c4057de3.js"},{"revision":"67dada8b3a6952d1102d68b2ffa70d56","url":"assets/js/1a4e3797.1e617d5c.js"},{"revision":"a67a7b56ac2559d654ce60a26234ad84","url":"assets/js/1be78505.f1e858e8.js"},{"revision":"1a9cc6a674b8b4ef5500243a9299f36e","url":"assets/js/1e4232ab.807f6359.js"},{"revision":"bb7febd9476fc255edaa1a4a4b58ee1e","url":"assets/js/1e65b0cc.7826f199.js"},{"revision":"fbd218486bfbf843d9fb25ecff465511","url":"assets/js/1f391b9e.de0f944d.js"},{"revision":"6122105924371807d128a074d7aca53d","url":"assets/js/26f02342.afa27a24.js"},{"revision":"ccfe1ce2abc080851a9ab8d8cc45a4a6","url":"assets/js/2868cdab.4408b22d.js"},{"revision":"40ed3c9b528d3312cc5cf4ad99a0ce25","url":"assets/js/295788ab.d5be7ed2.js"},{"revision":"1a0954ca229cbc4d158d04d5c1270f72","url":"assets/js/29d74f59.afcd6b37.js"},{"revision":"9ed6aab6f6e71259b1bdb8675fde3bb2","url":"assets/js/2b7c5c10.dbbf712e.js"},{"revision":"0d48ccf32a44bda85f23e483b80dde71","url":"assets/js/30a24c52.fe3d1282.js"},{"revision":"e628f73705177195b553620dd0247354","url":"assets/js/3570154c.c37ee8d6.js"},{"revision":"c75e39444d8932e7f52bac6c098f4c89","url":"assets/js/3720c009.a110f9ee.js"},{"revision":"1e4d005f0c387c89333854d2a7b39efb","url":"assets/js/393be207.b7746211.js"},{"revision":"88885ef479f56a39eea331c699af4e0d","url":"assets/js/3b693608.97aeb5cf.js"},{"revision":"22e32f5fb8ecb68126222fe65fa4be33","url":"assets/js/3d1783da.7ba3b695.js"},{"revision":"8639eb22a06d4288d85603499530a07f","url":"assets/js/474d3107.b8e92cca.js"},{"revision":"da55d32d6568752abc4d2ce92c0f75b4","url":"assets/js/5131.49d95ff5.js"},{"revision":"a37db55cca0346209aa31c7ffe8fafa9","url":"assets/js/533a09ca.3c792a8c.js"},{"revision":"7b19faec3a81c66ea7042b89e89e41f5","url":"assets/js/5525.cf502a04.js"},{"revision":"91b7986b58676d0d5bb65eed8139a84f","url":"assets/js/55960ee5.f7f12d43.js"},{"revision":"fa1a8df8a19c6958989dc0762a35ccd3","url":"assets/js/59581207.0a8f331b.js"},{"revision":"722789209596f7101a7e6df8be412b0e","url":"assets/js/5c868d36.0033da81.js"},{"revision":"90e6382855b1e0311efd5b48ad0f2f9e","url":"assets/js/6167.b8ef3672.js"},{"revision":"b413bb6a9668ca0df75d2b003b77393c","url":"assets/js/6403.a44703d9.js"},{"revision":"96ccfc3f99ef52e970d4e102b8e3212d","url":"assets/js/6875c492.be28d94a.js"},{"revision":"9c94db1bb4ad00b19a94783f739a35f5","url":"assets/js/7dfbeebb.93c9fbfa.js"},{"revision":"64b2e467b0a94347ef4a749541a4ae0b","url":"assets/js/814f3328.86d56d57.js"},{"revision":"253bdd86e3b5c8278a63a7f898dc3a5d","url":"assets/js/822bd8ab.1e6765fd.js"},{"revision":"1575c6b2025c7937d3dc8dfddee994a4","url":"assets/js/8443.159f986e.js"},{"revision":"93f07db32745ab804480762ac6c5f0d2","url":"assets/js/8455.3904071c.js"},{"revision":"5a6b5cde2ba82f4b340d1de33e3fd2aa","url":"assets/js/87f26539.ffa28a57.js"},{"revision":"2bc317eb17515252659467a29cce67db","url":"assets/js/8890ac7a.7afad12c.js"},{"revision":"dff59362c78cc319d6f912714cef4f94","url":"assets/js/917b00f7.b6d01981.js"},{"revision":"c0cc5dc7dd2a3983742be96c9d0af0e3","url":"assets/js/923.8e01249f.js"},{"revision":"02bf3aaf84e75f5930d0ac4c9869a20f","url":"assets/js/935f2afb.8fd65e9d.js"},{"revision":"cd2542175a6aa10ab361aeeca05f694b","url":"assets/js/96056db4.90df3498.js"},{"revision":"f9d604e36f16f924e4cfd399430633b2","url":"assets/js/9727.68d85327.js"},{"revision":"90f1fdf6599175120104983ea8756169","url":"assets/js/9c2086ba.3d8aaa81.js"},{"revision":"aa7e41c786cbfdab7e81a76d2df0800d","url":"assets/js/9cee6a8e.bfda3941.js"},{"revision":"5ac8c236b9bff19fef350e181569f9a9","url":"assets/js/9d248bbe.4d0f6c7f.js"},{"revision":"697766f4dec42356ab39b506b0d69feb","url":"assets/js/9e4087bc.0ccbe462.js"},{"revision":"857bb1a0bb62b77ee2a67ba473a2005e","url":"assets/js/a6aa9e1f.d19ca349.js"},{"revision":"31bff4a47e38c1bb8ff94fe9e070626c","url":"assets/js/a7023ddc.807f34da.js"},{"revision":"b151051a2708b042d8e7f565db5d0adc","url":"assets/js/a80da1cf.e20298dd.js"},{"revision":"93572212e361989085d3a0ffbbcee011","url":"assets/js/af172acd.700b58ba.js"},{"revision":"0070352aaa43a756435be0132fec8bb5","url":"assets/js/b2b675dd.bff4899b.js"},{"revision":"75dde59399b060683edb592c2e382566","url":"assets/js/b2f554cd.9dc76dc4.js"},{"revision":"a88b3f44cd9510482d2df31b1fcd59a9","url":"assets/js/c2343886.e6847fde.js"},{"revision":"5dee3625b55e56307d63717bc29b19ff","url":"assets/js/c2e4ed6e.29225337.js"},{"revision":"64905e7790f59e132b414f8510c39a55","url":"assets/js/c4f5d8e4.d6ea58ba.js"},{"revision":"6a3e1e4f1558693404179088a0b16eb9","url":"assets/js/ccc49370.7c94a8e5.js"},{"revision":"7600989e467ed11ca75a668dfa21204e","url":"assets/js/d610846f.7622790c.js"},{"revision":"1b8a63b9affa33647fae74d492bed96a","url":"assets/js/dea6ce99.0f07bfdf.js"},{"revision":"6c57fded83d6249a119ec3c7a21264cb","url":"assets/js/dff1c289.de2e87ff.js"},{"revision":"0ad0453210b2fdbf7f77dc6dc45437d8","url":"assets/js/e44a2883.bdc2a521.js"},{"revision":"57d252df4f0e2d324799facf2142692b","url":"assets/js/ece6f01b.79a2135f.js"},{"revision":"5cc93f415d2dd12ba72bb16c8805dc60","url":"assets/js/ee8bb330.d375c16c.js"},{"revision":"061194e7fc93e81c531b97535722ba8f","url":"assets/js/efbfcd47.92a4532c.js"},{"revision":"806908566bf05e3f6a3d65d8c33e3359","url":"assets/js/f55d3e7a.7807ca70.js"},{"revision":"510f8a19e850e38a8a56a2194cfafe69","url":"assets/js/f7ae7a07.84d0f74f.js"},{"revision":"efbb1d73103bc463cb5e9e2c936735c4","url":"assets/js/main.bc9c9da7.js"},{"revision":"db664144deced6655a387c7d87e9eea6","url":"assets/js/runtime~main.c522348c.js"},{"revision":"52baf4a919017d71caf3d7605b906fcd","url":"blog-archive/index.html"},{"revision":"87bd641ac4a065541ebeea70f0e7df6a","url":"blog/2021/08/29/信息源/index.html"},{"revision":"a5ac2b0275fb9eced6b9da72b39eb413","url":"blog/2021/08/30/全新生活空间设计/index.html"},{"revision":"6edbe715ec2edb5c59aa978a71e819f9","url":"blog/2021/08/30/如何制定计划？/index.html"},{"revision":"1ebf5b1e15c6b15a48a925e6f9b7cc67","url":"blog/2021/09/01/个人数字空间/index.html"},{"revision":"e7de486e738c3f72f7aa7d8efc3d4146","url":"blog/2021/09/01/成功方法论/index.html"},{"revision":"6c9ab00e77f6283e94455cb0188239c4","url":"blog/2021/09/02/完美生活/index.html"},{"revision":"980bc56b63ed00602408839a1716e0e0","url":"blog/archive/index.html"},{"revision":"d3f8bd2e870eaa1edcb46aee129125b4","url":"blog/hello-world/index.html"},{"revision":"8adb0c6e4c4148c5e7985c9cc7fb67e9","url":"blog/how-to-build-this-website/index.html"},{"revision":"57ea1efb59f39f51097365fe4f5dd909","url":"blog/index.html"},{"revision":"65a0eea246c0e5fec2ce64498436eb4c","url":"blog/tags/docusaurus/index.html"},{"revision":"60e5d7503178af9ef4409678397f32ab","url":"blog/tags/facebook/index.html"},{"revision":"702dc56d2a57af34359c9c02509c15a9","url":"blog/tags/hello/index.html"},{"revision":"b8407370bd9f3f90861c8a517e5e8712","url":"blog/tags/index.html"},{"revision":"385f209212e343d1ff92217d2c2d511a","url":"blog/welcome/index.html"},{"revision":"e8980b3528ebbe9d8239060872880d64","url":"docs/development/congratulations/index.html"},{"revision":"a0fb6abb841218f8c632c1c96e15454f","url":"docs/development/map-layout-docs-body-测试文档，不知道在哪里1/index.html"},{"revision":"092bd5048fc40b594a14d6fab67c2508","url":"docs/devops/clickhouse/clickhouse双机集群配置/index.html"},{"revision":"d7a603e6e975a452f5e970e25b552d65","url":"docs/devops/mysql/mysql-docker-主从-keepalived/index.html"},{"revision":"920dc855113b832092d7a0e0e3857bfd","url":"docs/devops/postgresql/postgres-docker-主从配置/index.html"},{"revision":"f853208dd01c8ff819842a332ce8f8ca","url":"docs/intro/index.html"},{"revision":"b49bdecd98001c458917866ee5864ebb","url":"docs/tags/index.html"},{"revision":"a5138f107aaeca2d22f13792e3b91cc5","url":"docs/tutorial-basics/congratulations/index.html"},{"revision":"1fe2d6dc9d33d7a03af74897661b1bce","url":"docs/tutorial-basics/create-a-blog-post/index.html"},{"revision":"7ebbfaf461985732a490d192822e0746","url":"docs/tutorial-basics/create-a-document/index.html"},{"revision":"ecb32d47bb3dbb23b7ab04743a04ea44","url":"docs/tutorial-basics/create-a-page/index.html"},{"revision":"f6b9b988542fd025301e99bb99d647f1","url":"docs/tutorial-basics/deploy-your-site/index.html"},{"revision":"d8e1f6393717304a71f9b055380919db","url":"docs/tutorial-basics/markdown-features/index.html"},{"revision":"2b3edcc8a16b9f9ad1a515ea47ddf2a9","url":"docs/tutorial-extras/manage-docs-versions/index.html"},{"revision":"137ce4a9d1a95328e405612312f3cfdd","url":"docs/tutorial-extras/translate-your-site/index.html"},{"revision":"e8371f56579a202f71fd5c58c738dad8","url":"docs/记录/优秀的个人博客/index.html"},{"revision":"128d243af8b22c8d51c9c1e0e31eb935","url":"helloMarkdown/index.html"},{"revision":"7d69bf1ad96f7d835bcf9d339374cde1","url":"helloReact/index.html"},{"revision":"2275f19b2716fe872c6df7e688d47d42","url":"index.html"},{"revision":"5cd18548d868f752b7738ef8946c81ec","url":"links/index.html"},{"revision":"e884b74a02f0fed2477ef92526fc975f","url":"manifest.json"},{"revision":"18102550832b552f901dad6122384f14","url":"markdown-page/index.html"},{"revision":"50cf15d883b08dbe31aa1562aa06c5d6","url":"readings/index.html"},{"revision":"5aa0bac9b9e587fec8d911f0dd5f8c53","url":"search-index.json"},{"revision":"8234aafe262c0ea46f63758913977674","url":"search/index.html"},{"revision":"eeb22043ddc03cd85b2bba552e6bf59a","url":"support/index.html"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"assets/images/docsVersionDropdown-dda80f009a926fb2dd92bab8faa6c4d8.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"assets/images/localeDropdown-0052c3f08ccaf802ac733b23e655f498.png"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/docusaurus.png"},{"revision":"4343e07bf942aefb5f334501958fbc0e","url":"img/favicon.ico"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/logo.svg"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"img/tutorial/docsVersionDropdown.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"img/tutorial/localeDropdown.png"},{"revision":"8d04d316f4d1777793ee773fcbf16cea","url":"img/undraw_docusaurus_mountain.svg"},{"revision":"3d3d63efa464a74e2befd1569465ed21","url":"img/undraw_docusaurus_react.svg"},{"revision":"932b535fc71feb29877bc4b9d708b1d0","url":"img/undraw_docusaurus_tree.svg"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/uploads/docusaurus.png"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/uploads/logo.svg"}];
+  const precacheManifest = [{"revision":"10938099bfffac74ae80741c31f3c4c1","url":"404.html"},{"revision":"18d10a73a98f8e0f1100f300b6a79e96","url":"about/index.html"},{"revision":"96c2a5d74e54ee5989deb805dd07d4f4","url":"admin/index.html"},{"revision":"40ef2b1748e3c271fa44002caf0dccd8","url":"assets/css/styles.2f28ffe5.css"},{"revision":"7960fef33a878a6c86d804988d5c1715","url":"assets/js/01a85c17.e5d1cb85.js"},{"revision":"3d333676085033cef171175eed358ce7","url":"assets/js/031793e1.1b33a602.js"},{"revision":"71ee5e91bbe41f51c752b75a3af7c0b9","url":"assets/js/06f8edbc.a8fda9ef.js"},{"revision":"b81546ff4e20de829d80c04b9ce3e368","url":"assets/js/0e384e19.44410194.js"},{"revision":"1de08718e17ec959c73eca1664eaada9","url":"assets/js/134049f5.648094d4.js"},{"revision":"b3c62c3384a727e87e94bf86bf87dc93","url":"assets/js/17896441.6fa58d1f.js"},{"revision":"b0f09b19a7dc3961b56cc637a2fabc93","url":"assets/js/18c41134.a2c0e76f.js"},{"revision":"21364e12f999e60d8f17dc552bb7e9e0","url":"assets/js/198089f0.c4057de3.js"},{"revision":"67dada8b3a6952d1102d68b2ffa70d56","url":"assets/js/1a4e3797.1e617d5c.js"},{"revision":"a67a7b56ac2559d654ce60a26234ad84","url":"assets/js/1be78505.f1e858e8.js"},{"revision":"1a9cc6a674b8b4ef5500243a9299f36e","url":"assets/js/1e4232ab.807f6359.js"},{"revision":"bb7febd9476fc255edaa1a4a4b58ee1e","url":"assets/js/1e65b0cc.7826f199.js"},{"revision":"fbd218486bfbf843d9fb25ecff465511","url":"assets/js/1f391b9e.de0f944d.js"},{"revision":"6122105924371807d128a074d7aca53d","url":"assets/js/26f02342.afa27a24.js"},{"revision":"ccfe1ce2abc080851a9ab8d8cc45a4a6","url":"assets/js/2868cdab.4408b22d.js"},{"revision":"40ed3c9b528d3312cc5cf4ad99a0ce25","url":"assets/js/295788ab.d5be7ed2.js"},{"revision":"1a0954ca229cbc4d158d04d5c1270f72","url":"assets/js/29d74f59.afcd6b37.js"},{"revision":"9ed6aab6f6e71259b1bdb8675fde3bb2","url":"assets/js/2b7c5c10.dbbf712e.js"},{"revision":"0d48ccf32a44bda85f23e483b80dde71","url":"assets/js/30a24c52.fe3d1282.js"},{"revision":"e628f73705177195b553620dd0247354","url":"assets/js/3570154c.c37ee8d6.js"},{"revision":"c75e39444d8932e7f52bac6c098f4c89","url":"assets/js/3720c009.a110f9ee.js"},{"revision":"1e4d005f0c387c89333854d2a7b39efb","url":"assets/js/393be207.b7746211.js"},{"revision":"88885ef479f56a39eea331c699af4e0d","url":"assets/js/3b693608.97aeb5cf.js"},{"revision":"22e32f5fb8ecb68126222fe65fa4be33","url":"assets/js/3d1783da.7ba3b695.js"},{"revision":"8639eb22a06d4288d85603499530a07f","url":"assets/js/474d3107.b8e92cca.js"},{"revision":"7d9068d61eaae0ab37529d23a46fd816","url":"assets/js/5131.8378a8c6.js"},{"revision":"a37db55cca0346209aa31c7ffe8fafa9","url":"assets/js/533a09ca.3c792a8c.js"},{"revision":"7b19faec3a81c66ea7042b89e89e41f5","url":"assets/js/5525.cf502a04.js"},{"revision":"91b7986b58676d0d5bb65eed8139a84f","url":"assets/js/55960ee5.f7f12d43.js"},{"revision":"fa1a8df8a19c6958989dc0762a35ccd3","url":"assets/js/59581207.0a8f331b.js"},{"revision":"722789209596f7101a7e6df8be412b0e","url":"assets/js/5c868d36.0033da81.js"},{"revision":"90e6382855b1e0311efd5b48ad0f2f9e","url":"assets/js/6167.b8ef3672.js"},{"revision":"b413bb6a9668ca0df75d2b003b77393c","url":"assets/js/6403.a44703d9.js"},{"revision":"96ccfc3f99ef52e970d4e102b8e3212d","url":"assets/js/6875c492.be28d94a.js"},{"revision":"9c94db1bb4ad00b19a94783f739a35f5","url":"assets/js/7dfbeebb.93c9fbfa.js"},{"revision":"64b2e467b0a94347ef4a749541a4ae0b","url":"assets/js/814f3328.86d56d57.js"},{"revision":"253bdd86e3b5c8278a63a7f898dc3a5d","url":"assets/js/822bd8ab.1e6765fd.js"},{"revision":"1575c6b2025c7937d3dc8dfddee994a4","url":"assets/js/8443.159f986e.js"},{"revision":"93f07db32745ab804480762ac6c5f0d2","url":"assets/js/8455.3904071c.js"},{"revision":"d80095e0b5d11c8954bdbde0972a36b0","url":"assets/js/87f26539.565027cd.js"},{"revision":"2bc317eb17515252659467a29cce67db","url":"assets/js/8890ac7a.7afad12c.js"},{"revision":"dff59362c78cc319d6f912714cef4f94","url":"assets/js/917b00f7.b6d01981.js"},{"revision":"c0cc5dc7dd2a3983742be96c9d0af0e3","url":"assets/js/923.8e01249f.js"},{"revision":"ac54fb70eef2ff8de42593799c06172f","url":"assets/js/935f2afb.e214c55a.js"},{"revision":"cd2542175a6aa10ab361aeeca05f694b","url":"assets/js/96056db4.90df3498.js"},{"revision":"f9d604e36f16f924e4cfd399430633b2","url":"assets/js/9727.68d85327.js"},{"revision":"90f1fdf6599175120104983ea8756169","url":"assets/js/9c2086ba.3d8aaa81.js"},{"revision":"aa7e41c786cbfdab7e81a76d2df0800d","url":"assets/js/9cee6a8e.bfda3941.js"},{"revision":"8dfcb1253837a00f09ad6f3932ca9bc9","url":"assets/js/9d248bbe.99ead1e6.js"},{"revision":"697766f4dec42356ab39b506b0d69feb","url":"assets/js/9e4087bc.0ccbe462.js"},{"revision":"857bb1a0bb62b77ee2a67ba473a2005e","url":"assets/js/a6aa9e1f.d19ca349.js"},{"revision":"31bff4a47e38c1bb8ff94fe9e070626c","url":"assets/js/a7023ddc.807f34da.js"},{"revision":"b151051a2708b042d8e7f565db5d0adc","url":"assets/js/a80da1cf.e20298dd.js"},{"revision":"93572212e361989085d3a0ffbbcee011","url":"assets/js/af172acd.700b58ba.js"},{"revision":"0070352aaa43a756435be0132fec8bb5","url":"assets/js/b2b675dd.bff4899b.js"},{"revision":"75dde59399b060683edb592c2e382566","url":"assets/js/b2f554cd.9dc76dc4.js"},{"revision":"a88b3f44cd9510482d2df31b1fcd59a9","url":"assets/js/c2343886.e6847fde.js"},{"revision":"5dee3625b55e56307d63717bc29b19ff","url":"assets/js/c2e4ed6e.29225337.js"},{"revision":"64905e7790f59e132b414f8510c39a55","url":"assets/js/c4f5d8e4.d6ea58ba.js"},{"revision":"6a3e1e4f1558693404179088a0b16eb9","url":"assets/js/ccc49370.7c94a8e5.js"},{"revision":"7600989e467ed11ca75a668dfa21204e","url":"assets/js/d610846f.7622790c.js"},{"revision":"1b8a63b9affa33647fae74d492bed96a","url":"assets/js/dea6ce99.0f07bfdf.js"},{"revision":"6c57fded83d6249a119ec3c7a21264cb","url":"assets/js/dff1c289.de2e87ff.js"},{"revision":"533b583a131e5c2dcaab689ca3b2e2cf","url":"assets/js/e44a2883.f0da4062.js"},{"revision":"57d252df4f0e2d324799facf2142692b","url":"assets/js/ece6f01b.79a2135f.js"},{"revision":"5cc93f415d2dd12ba72bb16c8805dc60","url":"assets/js/ee8bb330.d375c16c.js"},{"revision":"061194e7fc93e81c531b97535722ba8f","url":"assets/js/efbfcd47.92a4532c.js"},{"revision":"4f5532a554578faa66359bc3562805e9","url":"assets/js/f19e1f7e.7ff7fc60.js"},{"revision":"806908566bf05e3f6a3d65d8c33e3359","url":"assets/js/f55d3e7a.7807ca70.js"},{"revision":"510f8a19e850e38a8a56a2194cfafe69","url":"assets/js/f7ae7a07.84d0f74f.js"},{"revision":"57f643ece847f61661ae42cc34f2747c","url":"assets/js/main.97ed93ba.js"},{"revision":"133b28d7dd7013da38b6cc602ea26876","url":"assets/js/runtime~main.c18b7e15.js"},{"revision":"9de3d2d635512afa3cf5b21db796ec02","url":"blog-archive/index.html"},{"revision":"81bb2bc99baa8e2b794ad765d244cd4c","url":"blog/2021/08/29/信息源/index.html"},{"revision":"e7beb3812c90c196041f18c664b2ac3c","url":"blog/2021/08/30/全新生活空间设计/index.html"},{"revision":"909b9acbf5b1ca46ecf56e2607745dd8","url":"blog/2021/08/30/如何制定计划？/index.html"},{"revision":"5cce378afab68939c812f522954ca12e","url":"blog/2021/09/01/个人数字空间/index.html"},{"revision":"49a5baf66cf664ca71c8ba7fddce05bd","url":"blog/2021/09/01/成功方法论/index.html"},{"revision":"4a842c9fc40158c6466ab2b33d50bccb","url":"blog/2021/09/02/完美生活/index.html"},{"revision":"e90db11b136573a7b8a3e3d9dca1d1b3","url":"blog/archive/index.html"},{"revision":"c109e242eddbb46b27108cd45f3cf90b","url":"blog/hello-world/index.html"},{"revision":"780cb7eed306890dcfe3f58dce7614bc","url":"blog/how-to-build-this-website/index.html"},{"revision":"41bb7ed2e60b9bf94c48abefbb95e1e4","url":"blog/index.html"},{"revision":"00b38b03209fb19078f5e649fe7d6ec7","url":"blog/tags/docusaurus/index.html"},{"revision":"f5335aaeb06631eafdd48ab2b2984932","url":"blog/tags/facebook/index.html"},{"revision":"b3a74fa53331ece958ef103bc18aad5d","url":"blog/tags/hello/index.html"},{"revision":"470e488c842c2fe39e8fe4b8835fcb49","url":"blog/tags/index.html"},{"revision":"370a03fac9086054c516af3a1066711b","url":"blog/welcome/index.html"},{"revision":"f84301ae730409b338e7fbcef53813e6","url":"docs/CloudOS/文件系统/index.html"},{"revision":"f7edb0e6daa0ca2a1abac423caee60cd","url":"docs/development/congratulations/index.html"},{"revision":"2d7a6ee3f8ff4dcb92cd2291746b3045","url":"docs/development/map-layout-docs-body-测试文档，不知道在哪里1/index.html"},{"revision":"c68340eb266679672ef76178e406540e","url":"docs/devops/clickhouse/clickhouse双机集群配置/index.html"},{"revision":"bc56069118d72b4a0118853a68139582","url":"docs/devops/mysql/mysql-docker-主从-keepalived/index.html"},{"revision":"cb67fa75dad0100fccc509e61a9f0927","url":"docs/devops/postgresql/postgres-docker-主从配置/index.html"},{"revision":"ede6e978954858eb05c8533c21bca5ba","url":"docs/intro/index.html"},{"revision":"57cfae2ae0945477b389c94672f02691","url":"docs/tags/index.html"},{"revision":"cd86335714e58ef7a0ea18c0082f1f19","url":"docs/tutorial-basics/congratulations/index.html"},{"revision":"65a3314462a9f949d2524f85cb0d049b","url":"docs/tutorial-basics/create-a-blog-post/index.html"},{"revision":"a6292bb2bd182f4e577ccce6d18cc080","url":"docs/tutorial-basics/create-a-document/index.html"},{"revision":"ead17b5931f7b71e9b66c8fbcbae5d82","url":"docs/tutorial-basics/create-a-page/index.html"},{"revision":"4ae7c902e72779602daf20241c321843","url":"docs/tutorial-basics/deploy-your-site/index.html"},{"revision":"3e02859ff60dda3fb5084e4d84adac57","url":"docs/tutorial-basics/markdown-features/index.html"},{"revision":"faa49fb615fc38df2b8abb7f8c8d35b7","url":"docs/tutorial-extras/manage-docs-versions/index.html"},{"revision":"71608edb96d7994c7058a6a5c83e7cbb","url":"docs/tutorial-extras/translate-your-site/index.html"},{"revision":"7876b86c566bea01c48a3033fa77857c","url":"docs/记录/优秀的个人博客/index.html"},{"revision":"3b6d21effc007b991bbeb10f8716d42e","url":"helloMarkdown/index.html"},{"revision":"cfc07927d8ece3fa164b93056ef331ec","url":"helloReact/index.html"},{"revision":"c12930065d718eadff46275558dd8c1c","url":"index.html"},{"revision":"63ca13be72f65c6deba6050b6880cacd","url":"links/index.html"},{"revision":"e884b74a02f0fed2477ef92526fc975f","url":"manifest.json"},{"revision":"43bc2bbea31cf69e7129439771814f36","url":"markdown-page/index.html"},{"revision":"ec0fc1dd856ec7aaa0b89bba0b9f9e46","url":"readings/index.html"},{"revision":"819f2eaa31bdf8c68e8dacb8043f29f8","url":"search-index.json"},{"revision":"52d1bd2e2be667b6bdca95c433863a5a","url":"search/index.html"},{"revision":"b2e4d3356c7ada24d381b2449b11ee7d","url":"support/index.html"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"assets/images/docsVersionDropdown-dda80f009a926fb2dd92bab8faa6c4d8.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"assets/images/localeDropdown-0052c3f08ccaf802ac733b23e655f498.png"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/docusaurus.png"},{"revision":"4343e07bf942aefb5f334501958fbc0e","url":"img/favicon.ico"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/logo.svg"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"img/tutorial/docsVersionDropdown.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"img/tutorial/localeDropdown.png"},{"revision":"8d04d316f4d1777793ee773fcbf16cea","url":"img/undraw_docusaurus_mountain.svg"},{"revision":"3d3d63efa464a74e2befd1569465ed21","url":"img/undraw_docusaurus_react.svg"},{"revision":"932b535fc71feb29877bc4b9d708b1d0","url":"img/undraw_docusaurus_tree.svg"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/uploads/docusaurus.png"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/uploads/logo.svg"}];
   const controller = new workbox_precaching__WEBPACK_IMPORTED_MODULE_0__.PrecacheController({
     fallbackToNetwork: true, // safer to turn this true?
   });
