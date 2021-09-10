@@ -15,3 +15,7 @@ hide_table_of_contents: true
 ### 关于此博客
 
 代码在 github，页面同时部署在 github pages,gitee pages, netlify,vercel，每次更新代码，会自动同步部署这一个网址。参见我的[这篇博客](/blog/how-to-build-this-website)
+
+### 格言
+
+> 在代码的世界中，一个人的速度可以快过一万个人
