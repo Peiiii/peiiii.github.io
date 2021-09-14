@@ -2,17 +2,17 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2021-09-02T00:00:00.000Z</updated>
+    <updated>2021-09-14T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[完美生活]]></title>
-        <id>完美生活</id>
-        <link href="https://p.eiooie.com/blog/2021/09/02/完美生活"/>
-        <updated>2021-09-02T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[完美的生活是怎样的？]]></summary>
+        <title type="html"><![CDATA[人生目标]]></title>
+        <id>人生目标</id>
+        <link href="https://p.eiooie.com/blog/2021/09/14/人生目标"/>
+        <updated>2021-09-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[修身第一]]></summary>
         <author>
             <name>Wang Pei</name>
         </author>
@@ -21,7 +21,7 @@
         <title type="html"><![CDATA[学习之路]]></title>
         <id>学习之路</id>
         <link href="https://p.eiooie.com/blog/2021/09/12/学习之路"/>
-        <updated>2021-09-02T00:00:00.000Z</updated>
+        <updated>2021-09-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[记录自己的学习历程，监督自己的学习进度]]></summary>
         <author>
             <name>Wang Pei</name>
@@ -31,8 +31,18 @@
         <title type="html"><![CDATA[如何养成社交牛逼症]]></title>
         <id>如何养成社交牛逼症</id>
         <link href="https://p.eiooie.com/blog/2021/09/12/社交牛逼症教程"/>
-        <updated>2021-09-02T00:00:00.000Z</updated>
+        <updated>2021-09-12T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[- 牛皮症的精髓：经常夸别人，却很少吹自己]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[完美生活]]></title>
+        <id>完美生活</id>
+        <link href="https://p.eiooie.com/blog/2021/09/02/完美生活"/>
+        <updated>2021-09-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[完美的生活是怎样的？]]></summary>
         <author>
             <name>Wang Pei</name>
         </author>

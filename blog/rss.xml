@@ -4,29 +4,36 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Thu, 02 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <item>
-            <title><![CDATA[完美生活]]></title>
-            <link>https://p.eiooie.com/blog/2021/09/02/完美生活</link>
-            <guid>完美生活</guid>
-            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[完美的生活是怎样的？]]></description>
+            <title><![CDATA[人生目标]]></title>
+            <link>https://p.eiooie.com/blog/2021/09/14/人生目标</link>
+            <guid>人生目标</guid>
+            <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[修身第一]]></description>
         </item>
         <item>
             <title><![CDATA[学习之路]]></title>
             <link>https://p.eiooie.com/blog/2021/09/12/学习之路</link>
             <guid>学习之路</guid>
-            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[记录自己的学习历程，监督自己的学习进度]]></description>
         </item>
         <item>
             <title><![CDATA[如何养成社交牛逼症]]></title>
             <link>https://p.eiooie.com/blog/2021/09/12/社交牛逼症教程</link>
             <guid>如何养成社交牛逼症</guid>
-            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[- 牛皮症的精髓：经常夸别人，却很少吹自己]]></description>
+        </item>
+        <item>
+            <title><![CDATA[完美生活]]></title>
+            <link>https://p.eiooie.com/blog/2021/09/02/完美生活</link>
+            <guid>完美生活</guid>
+            <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[完美的生活是怎样的？]]></description>
         </item>
         <item>
             <title><![CDATA[个人数字空间]]></title>
