@@ -4,9 +4,16 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Tue, 14 Sep 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 17 Sep 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[未来的世界会是怎样的？]]></title>
+            <link>https://p.eiooie.com/blog/2021/09/17/未来的世界是怎样的？</link>
+            <guid>未来的世界会是怎样的？</guid>
+            <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[关于未来的预测]]></description>
+        </item>
         <item>
             <title><![CDATA[人生目标]]></title>
             <link>https://p.eiooie.com/blog/2021/09/14/人生目标</link>
