@@ -4,9 +4,16 @@
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
         <description>pEIIII's websITE Blog</description>
-        <lastBuildDate>Sun, 10 Oct 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 11 Oct 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[API云平台]]></title>
+            <link>https://p.eiooie.com/blog/2021/10/11/API云平台</link>
+            <guid>API云平台</guid>
+            <pubDate>Mon, 11 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[头脑风暴]]></description>
+        </item>
         <item>
             <title><![CDATA[价值定义、价值创造与价值分配]]></title>
             <link>https://p.eiooie.com/blog/2021/10/10/价值定义、价值创造与价值分配</link>

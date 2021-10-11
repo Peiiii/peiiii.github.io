@@ -2,11 +2,21 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2021-10-10T00:00:00.000Z</updated>
+    <updated>2021-10-11T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[API云平台]]></title>
+        <id>API云平台</id>
+        <link href="https://p.eiooie.com/blog/2021/10/11/API云平台"/>
+        <updated>2021-10-11T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[头脑风暴]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[价值定义、价值创造与价值分配]]></title>
         <id>价值定义、价值创造与价值分配</id>
