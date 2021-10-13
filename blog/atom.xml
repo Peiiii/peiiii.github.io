@@ -2,11 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://p.eiooie.com/blog</id>
     <title>pEIIII's websITE Blog</title>
-    <updated>2021-10-11T00:00:00.000Z</updated>
+    <updated>2021-10-13T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://p.eiooie.com/blog"/>
     <subtitle>pEIIII's websITE Blog</subtitle>
     <icon>https://p.eiooie.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[人生之意义]]></title>
+        <id>人生之意义</id>
+        <link href="https://p.eiooie.com/blog/2021/10/13/人生之意义"/>
+        <updated>2021-10-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[人生的意义是什么？这不是一个完整的问题。因而许多人苦思冥想，终究找不到满意的答案。如何不完整？听我与你解释。]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[学会生活]]></title>
+        <id>学会生活</id>
+        <link href="https://p.eiooie.com/blog/2021/10/13/学会生活"/>
+        <updated>2021-10-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[人生的第一阶段：学会生活]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[智能计算节点]]></title>
+        <id>智能计算节点</id>
+        <link href="https://p.eiooie.com/blog/2021/10/13/智能计算节点"/>
+        <updated>2021-10-13T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[在区块链网络中，每个节点都运行着一套行动系统。节点会接受外部输入，也会主动向外部输出。而传统的服务器，通常只是对外部输入做出响应式输出。两相比较，传统服务器像是低能动物，区块链节点则进化了一些，变成了更高级的物种。对了，还有一些静态的文件服务器，它们更像是植物一些。]]></summary>
+        <author>
+            <name>Wang Pei</name>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[API云平台]]></title>
         <id>API云平台</id>
