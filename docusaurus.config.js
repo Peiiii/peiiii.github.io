@@ -15,7 +15,7 @@ module.exports = {
 
   themeConfig: {
     navbar: {
-      title: "pEIIII's websITE",
+      title: "pEIIIIの小世界",
       logo: {
         alt: "My Site Logo",
         src: "img/logo.svg"
