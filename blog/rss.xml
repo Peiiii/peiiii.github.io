@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>pEIIII's websITE Blog</title>
         <link>https://p.eiooie.com/blog</link>
@@ -13,6 +13,7 @@
             <guid>人生之意义</guid>
             <pubDate>Wed, 13 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[人生的意义是什么？这不是一个完整的问题。因而许多人苦思冥想，终究找不到满意的答案。如何不完整？听我与你解释。]]></description>
+            <content:encoded><![CDATA[<blockquote><p>人生的意义是什么？这不是一个完整的问题。因而许多人苦思冥想，终究找不到满意的答案。如何不完整？听我与你解释。</p></blockquote><p>当我们问 A 的意义是什么, 要么是说“A 的含义是什么？”，要么是说“A 有什么作用？A 对我们有什么帮助？”。 “人生的意义是什么？”，就是在问“人生有什么作用？人生对我们有什么帮助？”。</p><p>当我们说“A 有什么作用？”时，我们隐含了一个限定，完整的问题是“A 对实现目标 B 有什么作用？”，即“A 对于推进目标 B 有何帮助？”。</p><p>在这种问句中，我们常常会省略限定“对实现目标 B”。如“你每天在这抱怨有什么用呢？”，完整的描述是“你每天在这抱怨对于解决你所抱怨的问题有什么用呢？”。很多时候，即使省略了这个限定，我们也能意会。</p><p>但对于“人生的意义是什么？”这个问题，省略了限定之后，我们却无法意会了。你所问的是，“人生对于保持身体健康有什么作用？”，还是“人生对于挣到一个亿有什么作用？”，还是“人生对于找对象有什么作用？”。由于无法确定目标 B 所指为何，因而这个问题的表述不完整，无法求解。</p><h3>人生应该如何度过？</h3><p>以上虽然论证了“人生的意义是什么”是一个假问题。但这样的结果并不能让我们满意。我们依然困惑，我们应该做什么？人生应该追求什么？</p><p>当我们说“应该这样做”的时候，前置条件是有一套规则来判定“什么是对，什么是错”。然而，没有一套天然的准则来判断，人生种每种行为的对错。</p><p>就像一片树叶在空中飘舞，它也在问“我接下来应该往哪个方向飘呢？”。而在路人看来，树叶往哪飘，是由风（气流）和树叶自身的动量、形状、密度等决定的，不管往哪个方向飘，没有对错之分。</p><p>的确没有对错之分，但是有</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[学会生活]]></title>
@@ -20,13 +21,15 @@
             <guid>学会生活</guid>
             <pubDate>Wed, 13 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[学会生活，就是学会在现有条件之下，获得内心的快乐与坦然。生活家的最高境界就是，无论在什么样的现状之中，都能获得内心的快乐与坦然。]]></description>
+            <content:encoded><![CDATA[<blockquote><p>学会生活，就是学会在现有条件之下，获得内心的快乐与坦然。生活家的最高境界就是，无论在什么样的现状之中，都能获得内心的快乐与坦然。</p></blockquote><p>需要注意的是，适应现状并不意味着停止改变现状，适应现状不意味着放弃梦想，生活家同时也可以是梦想家。最好的生活或许就是，在适应生活的同时不断让生活变得更好。</p><h3>人生的第一阶段：学会生活</h3>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[智能节点与智能网络]]></title>
             <link>https://p.eiooie.com/blog/2021/10/13/智能节点与智能网络</link>
             <guid>智能节点与智能网络</guid>
             <pubDate>Wed, 13 Oct 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[在区块链网络中，每个节点都运行着一套行动系统。节点会接受外部输入，也会主动向外部输出。而传统的服务器，通常只是对外部输入做出响应式输出。两相比较，传统服务器像是低能动物，区块链节点则进化了一些，变成了更高级的物种。对了，还有一些静态的文件服务器，它们更像是植物一些。]]></description>
+            <description><![CDATA[在区块链网络中，每个节点都运行着一套行动系统。节点会接受外部输入，也会主动向外部输出。而传统的服务器，通常只是对外部输入做出响应式输出。两相比较，传统服务器像是低等动物，区块链节点则进化了一些，变成了更高级的物种。对了，还有一些静态的文件服务器，它们更像是植物一些。]]></description>
+            <content:encoded><![CDATA[<blockquote><p>在区块链网络中，每个节点都运行着一套行动系统。节点会接受外部输入，也会主动向外部输出。而传统的服务器，通常只是对外部输入做出响应式输出。两相比较，传统服务器像是低等动物，区块链节点则进化了一些，变成了更高级的物种。对了，还有一些静态的文件服务器，它们更像是植物一些。</p></blockquote><h3>智能节点</h3><h3>分布式智能网络</h3>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[API云平台]]></title>
@@ -34,6 +37,7 @@
             <guid>API云平台</guid>
             <pubDate>Mon, 11 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[头脑风暴]]></description>
+            <content:encoded><![CDATA[<h3>头脑风暴</h3><ul><li>通用代码库：github</li><li>编程语言库: pypi,npm</li><li>软件库：linux 软件源</li><li>计算平台：公有云，亚马逊、阿里云</li><li>存储平台：云文件存储、对象存储、云数据库</li><li>API 信息测试平台：postman</li><li>智能合约平台：以太坊、ICP、其它公链</li><li>云函数平台：FAAS？</li><li>API 网络？更彻底的云函数？</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[价值定义、价值创造与价值分配]]></title>
@@ -41,6 +45,7 @@
             <guid>价值定义、价值创造与价值分配</guid>
             <pubDate>Sun, 10 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[我们为什么内卷？]]></description>
+            <content:encoded><![CDATA[<blockquote><p>我们为什么内卷？</p></blockquote><h3>现代社会的价值定义</h3><ul><li>在多大程度上增加了多少人的幸福感<ul><li>将民生转化为价值</li></ul></li><li>价值创造的两个方向:<ul><li>降低成本</li><li>价值增量</li></ul></li></ul><h3>价值创造与价值分配</h3><ul><li>统一的价值分配系统</li><li>借助区块链？</li><li>弱内卷的系统？</li></ul><h3>生产力提高的两种方式</h3><ul><li>科技技术的创新、突破</li><li>更充分更合理的利用现有科技</li></ul><h3>一种新的创业模式</h3><ul><li>创造一台生产机器的价值</li><li>运营一台机器的价值</li><li>阿里巴巴不用做太多东西，就能赚很多钱了</li><li>阿里巴巴现阶段的投入，更多用于维持竞争力而非创造价值增量？</li></ul><h3>一种理想的社会形态</h3><ul><li>大多数生产都自动化</li><li>人类进行创造性的工作（社会的生产力支柱）、娱乐性的活动（游戏（广义）、社交、探索（旅游））和实现自我潜能的活动（学习、锻炼、挑战）</li></ul><h3>实现条件</h3><ul><li>生产制造自动化</li><li>生活成本极低</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[未来的世界会是怎样的？]]></title>
@@ -48,6 +53,7 @@
             <guid>未来的世界会是怎样的？</guid>
             <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[关于未来的预测]]></description>
+            <content:encoded><![CDATA[<blockquote><p>关于未来的预测</p></blockquote><h3>未来的生活</h3><h3>降低成本 vs 增加收益？</h3><h3>头脑风暴</h3><ul><li>无人工厂、智能制造</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[人生目标]]></title>
@@ -55,6 +61,7 @@
             <guid>人生目标</guid>
             <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[修身第一，成就第二]]></description>
+            <content:encoded><![CDATA[<blockquote><p>修身第一，成就第二</p></blockquote><h3>修身</h3><p><strong>品质</strong></p><ul><li>自信大方</li><li>阳光开朗</li><li>沉着冷静</li><li>果敢坚毅</li><li>严于律己</li><li>宽以待人</li><li>有主见、有担当、有魄力、有远见</li></ul><p><strong>能力</strong></p><ul><li>学习能力</li><li>社交能力</li><li>专业能力</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[学习之路]]></title>
@@ -62,6 +69,7 @@
             <guid>学习之路</guid>
             <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[记录自己的学习历程，监督自己的学习进度]]></description>
+            <content:encoded><![CDATA[<blockquote><p>记录自己的学习历程，监督自己的学习进度</p></blockquote><h3>2021 年 9 月之前</h3><ul><li>前端<ul><li>react 框架<ul><li>使用 react 做了什么项目？</li></ul></li><li>vue<ul><li>项目？</li></ul></li></ul></li><li>python<ul><li>flask 框架/sanic 框架</li><li>开发了？用什么来证明自己的学习成果？</li></ul></li><li>java<ul><li>项目？</li></ul></li><li>Devops<ul><li>github actions</li><li>git</li></ul></li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[如何养成社交牛逼症]]></title>
@@ -69,6 +77,7 @@
             <guid>如何养成社交牛逼症</guid>
             <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[- 牛皮症的精髓：经常夸别人，却很少吹自己]]></description>
+            <content:encoded><![CDATA[<ul><li>牛皮症的精髓：经常夸别人，却很少吹自己</li></ul><h3>参考</h3><ul><li><a href="https://36kr.com/p/1389786709998597">https://36kr.com/p/1389786709998597</a></li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[完美生活]]></title>
@@ -76,6 +85,7 @@
             <guid>完美生活</guid>
             <pubDate>Thu, 02 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[完美的生活是怎样的？]]></description>
+            <content:encoded><![CDATA[<h3>完美的生活是怎样的？</h3><ul><li><a href="https://www.zhihu.com/question/452616303/answer/1823715074">财务自由的人可以分享一下生活吗</a></li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[个人数字空间]]></title>
@@ -83,6 +93,7 @@
             <guid>个人数字空间</guid>
             <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[个人数字空间]]></description>
+            <content:encoded><![CDATA[<h3>个人数字空间</h3><hr/><h3>功能</h3><ul><li>网盘 (NAS, 文件浏览器，可搜索，可通过链接分享，可共享，可挂载)<ul><li>提供类似 IDE 的树形目录结构和文件管理功能（可利用 VScode 的开源项目）。</li></ul></li><li>相册</li><li>笔记（有道云笔记，markdown, 富文本, 思维导图）</li><li>日记</li><li>个人知识库（可搜索，方便添加）</li><li>导航面板（papaly.com）</li><li>计划面板(getplan.co)</li><li>信息聚合(rss feed, pocket &amp; panda)</li><li>work 面板（或者称之为桌面）(可随意拖拽和 resize 的小组件，双击即可记录文本， 也可以右键添加别的组件，例如画板、todolist 等 )。</li></ul><h3>特性</h3><ul><li>支持多端访问，尤其是 web 接口</li><li>流畅性、界面设计、可定制性</li><li>模块化、结构化、可摘分、可组装</li><li>弹性伸缩</li><li>通过类似 utools 的快捷入口实现快速搜索和执行</li><li>可安装第三方应用（将第三方应用嵌入网站页面，成为一个应用）</li></ul><h3>拓展</h3><ul><li><p>链接其它 web 应用</p><ul><li>邮件</li><li>google drive</li><li>google docs</li><li>microsoft office365 docs</li></ul></li><li><p>通讯</p><ul><li>群组</li><li>单聊</li><li>直播</li><li>会议</li></ul></li><li><p>协作</p><ul><li>文档、表格协同编辑</li><li>共享文件夹</li></ul></li><li><p>music</p></li></ul><h3>其它</h3><ul><li>布局设计可参考飞书、teambition</li></ul><h3>愿景</h3><p>有一天，几乎所有的应用都会迁移到云端，几乎所有的功能都能通过浏览器窗口来使用。</p><ul><li>在网页中办公<ul><li>文件整理，文档编辑，文件分享，会议，通讯</li></ul></li><li>在网页中学习<ul><li>阅读文档（包括各种书籍）</li><li>做笔记、写文档、构建知识库</li></ul></li><li>在网页中玩游戏<ul><li>不用担心存档，换一台电脑还能接着玩，而电脑都不用安装游戏。</li></ul></li><li>在网页中开发<ul><li>写代码，调试代码，提交代码，部署应用，协同编辑，全部都在网页中完成</li></ul></li><li>在网页中使用大型专业软件<ul><li>如游戏引擎、EDA、Matlab 等等。网页是一个入口，可以承载少部分的计算任务，但密集的计算将交给云端来完成。由于云端资源可以按需分配，弹性自适应伸缩，因而可以大大提高计算资源的使用效率，也降低了使用这些重型软件的成本。</li></ul></li></ul><h3>参考</h3><h4>相似产品</h4><ul><li><a href="https://feishu.cn">飞书</a>(重点参考)<ul><li>飞书功能已经足够强大，只是飞书是一个 2B 产品，主要针对办公场景，而非私人使用。</li><li>如果有一天飞书也面向普通用户推出相应的产品，又如何做到不被其超越？</li><li>对于普通用户而言，飞书的功能虽然多，但页面间的跳转很不丝滑，很影响体验。</li></ul></li><li>坚果云</li><li>NextCloud(体验<a href="https://my.opendesktop.org/">https://my.opendesktop.org/</a>)<ul><li>私人网盘</li></ul></li></ul><h4>在线开发</h4><ul><li><a href="https://codesandbox.io/">Codesandbox</a>:基于 docker 容器 和 vscode 编辑器实现</li><li><a href="https://colab.research.google.com/">Google Colab</a>:python 运行环境</li></ul><h4>云端运行的大型软件</h4><ul><li><a href="https://www.photopea.com/">云端运行 photoshop</a></li><li><a href="https://www.mathworks.com/help/matlab/matlab_env/what-is-matlab-online.html">Matlab 提供在线使用的功能</a></li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[成功方法论]]></title>
@@ -90,6 +101,8 @@
             <guid>成功方法论</guid>
             <pubDate>Wed, 01 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[要素]]></description>
+            <content:encoded><![CDATA[<h3>要素</h3><ul><li>认知和信息源</li><li>技能和能力<ul><li>学习能力</li><li>信息搜集能力</li><li>社交能力</li><li>表达能力</li></ul></li><li>身心状态和个人努力<ul><li>身体状态和精神状态</li><li>热忱</li><li>专注</li><li>坚毅</li></ul></li></ul><h3>两种评价指标</h3><ul><li>事业<ul><li>改造世界</li></ul></li><li>个人<ul><li>改造自我
+修身齐家治国平天下。在个人能力还有很大提升空间的情况之下，应以个人能力的提升为重。</li></ul></li></ul><p>当两者并不是冲突的，可以同时进行。在构建自己的事业的同时，个人能力也会得到提升。当事业遇到挫折时，不必过于沮丧，因为个人的能力更为重要。在个人的修为“大成”之前，应以个人能力作为第一评价指标。</p><p>这样，也就不会以为小的得失，而影响自己的状态和心境。得失心自然就化解了，人就会变得洒脱大气起来。</p><h3>变强</h3><p>人具有主观能动性的，人能改变物质世界，也能改变自我。想要练就过人的实力，你需要</p><ul><li>学习</li><li>锻炼（更强调实践）</li></ul><h3>持续前进的力量</h3><p>有一片丛林，丛林的外围分布着大大小小的山峰，它们有高有低，有远有近，散步在各个方向上。许多自远方而来的人到达山脚之下，并停留于此。有的人停留在了山坡，少数的人则登上了山顶。</p><p>你正在参加一场比赛，所有的选手的自丛林的中心出发，登上任意一座山峰，就能受到人们的瞩目，收获荣誉和成就感，被视为成功者。</p><p>想要成功，最好的办法应该是</p><ul><li>选择方向<ul><li>选择大方向和小方向</li><li>越大的方向，对应着越重要的选择，越要认真抉择</li><li>在信息充足的前提下，尽早选择大方向。越是大方向，越要尽早抉择。</li><li>要达到信息充足，需要搜集信息，要构建自己的信息源和信息渠道。关注相关的媒体，认识相关的人。</li><li>当方向不明晰时，需要充分的收集信息、咨询有经验的人，以做出正确的选择，确定方向。 明确一点：坚定目标远好过犹豫不前。</li><li>如果穷尽信息和人脉，也无法做出选择，就轮流尝试多个方向。</li></ul></li><li>持续前进<ul><li>在大方向正确的前提下，坚持不懈地前进</li><li>往一个方向坚定持续地前进，速度远远快过多个方向的试探或原地打转。</li><li>当前方充满迷雾时，可稍作停留，观察环境了解清楚情况再出发。</li></ul></li></ul><h3>意志力与信息源</h3><p>信息源是正确选择方向的前提，意志力是在一个方向上持续前进的前提。</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[全新生活空间设计]]></title>
@@ -97,6 +110,7 @@
             <guid>全新生活空间设计</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[面向未来的全新一代生活空间]]></description>
+            <content:encoded><![CDATA[<h3>面向未来的全新一代生活空间</h3><blockquote><p>房价不断攀升，买不起房成为当代年轻人的一大烦恼。想住上舒适的房子，却无法支付大房子的高售价。即使有了房子，房屋如何装修和布置一个令人头疼的问题。有着现代科技的支持，我们是否可能设计出一种全新的生活空间，在降低成本的同时，极大的拓展其空间利用率、功能、设计感、舒适度，并使之智能化。</p></blockquote><p>同样大小的房子，有的房子可以装修布置奢华大气，功能丰富又有氛围感；有的房子却显得毫无格调，昏暗狭小，住起来不舒适也不方便</p><h3>未来生活空间的特点</h3><ul><li>空间利用率极大提高</li><li>房屋的功能极大拓展</li><li>房屋的设计感和舒适度得以低成本的实现</li><li>房屋智能化，智能家居、智能设备取代传统家具器件</li><li>可定制可修改性(customizable)</li></ul><h3>参考</h3><ul><li><a href="https://t.ynet.cn/baijia/30461382.html">消除“住房焦虑”是新发展阶段的一项重大任务</a></li><li><a href="https://www.sohu.com/a/411966275_667411">高房价下，拿什么拯救 80、90 后的住房焦虑？</a></li></ul><h3>关键词</h3><p>全新一代生活空间</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[如何制定计划？]]></title>
@@ -104,6 +118,8 @@
             <guid>如何制定计划？</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[如何制定计划？]]></description>
+            <content:encoded><![CDATA[<h3>如何制定计划？</h3><blockquote><p>时间在一点一点的流逝，但你的众多任务却进展缓慢，甚至停滞不前。你感到彷徨，没有充实感。</p></blockquote><ul><li>是否有必要为每天、甚至每个小时都制定计划呢？</li><li>怎样能实现高效率、快速完成任务、不断进步呢？</li></ul><h3>关键词</h3><p>计划、效率、快速推进、变得更优秀、变得更强
+朝夕日历</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[信息源]]></title>
@@ -111,6 +127,7 @@
             <guid>信息源</guid>
             <pubDate>Sun, 29 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[信息源的重要性]]></description>
+            <content:encoded><![CDATA[<h3>信息源的重要性</h3><ul><li>在你的眼前有无数条道路，由于信息有限你能看见的只是少数几条。在眼前有许多种选择，但大多数都被一团迷雾所遮挡，拨开迷雾才能看见隐藏的选择。这团迷雾就是信息差（认知差）。</li><li>在较长的一段时期里，我对未来的专业方向缺乏认知，我对是否读研缺乏认知（因而我没有尽早的学习，提高我的 GPA，也没有为到更优秀的学校学习做准备),我对未来的专业方向缺乏认知（因而没有及早选择计算机专业），我对读研的两种路径（考验和保研）缺乏认知（没有尽早努力提高我的 GPA），读研后对未来的规划也一直迷迷糊糊（因而荒废了大量的时光）。</li><li>信息源包括：人际信息（家人、朋友、同事、老师），公开信息（网络，书籍）</li></ul><h3>信息源的作用是什么？</h3><ul><li>了解世界正在发生的变化</li><li>了解世界发展的趋势：未来将会出现的变换</li><li>完善对世界的认知(政治、经济、文化、社会、科技、自然、生活)</li><li>接触新的思想、观点、方法论</li><li>帮助制定人生规划、做出人生选择</li></ul><h3>如何完善自己的信息源矩阵？</h3><ul><li>社会热点</li><li>时政</li><li>财经</li><li>技术</li><li>未来趋势</li><li>思想|观点</li><li>生活？</li></ul><h3>利用信息源，制定职业规划</h3><ul><li>知乎</li><li>脉脉</li><li>各大招聘网站</li><li>社群?</li></ul><hr/><blockquote><p>关于我</p></blockquote><h3>构建我的媒体信息源</h3><p><strong>媒体</strong></p><ul><li>36kr、虎嗅、<code>IT桔子</code>(科技创投)</li><li>知乎、微博(时事热点)</li><li>澎湃新闻(时政)</li><li><code>FT中文网</code>(财经)</li></ul><p><strong>技术</strong></p><ul><li>Gitub</li><li>Hacker News</li><li>Thoughtworks</li><li>InfoQ</li></ul><p><strong>信息聚合</strong></p><ul><li>panda</li></ul><h3>信息爆炸</h3><ul><li>区块链世界的信息如同大爆炸一般，，却令人眼花缭乱，不知如何是好。但混乱而大量的信息汹涌而来，我们如何应对。如何对这些信息进行鉴别、筛选、挖掘，提取出其中精华的部分，进而深入其中。 也就是怎么找到一个良好的切入点，让我们看清这一巨大迷雾背后的清晰结构，让我们一睹其真容。其中或许潜藏着巨大的机会，但只有理清其中的脉络，才可能有条不紊的去追寻这些机会，否则很可能这是凑了个热闹。</li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[零成本网站快速搭建指南]]></title>
@@ -118,6 +135,11 @@
             <guid>how-to-build-this-website</guid>
             <pubDate>Sat, 21 Aug 2021 08:24:26 GMT</pubDate>
             <description><![CDATA[从大二或大三开始，我就一直执著于搭建自己的个人网站，其间尝试了许多方法，也走了非常多的弯路，今天我把我所积累的知识记录于此。]]></description>
+            <content:encoded><![CDATA[<p>:::info
+从大二或大三开始，我就一直执著于搭建自己的个人网站，其间尝试了许多方法，也走了非常多的弯路，今天我把我所积累的知识记录于此。
+本网站基于 docusaurus 生成静态网页，代码托管与 gitub，同步部署到 github pages, gitee pages, vercel, netlify.
+:::</p><p>每次 commit 代码，都会自动更新这几种部署方式。
+使用 codesandbox 绑定 github，就可以在线编辑代码和博客，直接 commit 到 github，接下来站会自动更新。使用 codesandbox 需要安装一个浏览器插件比较方便，<code>Github Web IDE</code>，安装这个插件后，可以在每个 repo 的菜单栏看到相应的选项。</p><p>个人网站建站方法：</p><ul><li>低代码/零代码建站系统</li><li>cms 如 wordpress, typecho</li><li>静态博客生成器<ul><li>jekyll</li><li>hugo</li><li>hexo</li><li>gastby(docz 主题)</li><li>vuepress</li><li>docusauru</li><li>gitbook</li><li>mkdocs</li><li>docsify</li></ul></li><li>wiki 系统<ul><li>MediaWiki(维基百科)</li><li>DokuWiki</li><li>MoinMoin</li></ul></li><li>部署方式<ul><li>对象存储</li><li>github pages / gitee pages</li><li>vercel</li><li>netlify</li></ul></li><li>serveless<ul><li>netlify</li><li>vercel</li><li>supabase (Backend as a Service)</li></ul></li><li>数据库<ul><li>MongoDB cloud(免费云数据库 500MB 空间)</li></ul></li></ul>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Welcome]]></title>
@@ -125,6 +147,7 @@
             <guid>welcome</guid>
             <pubDate>Thu, 30 May 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></description>
+            <content:encoded><![CDATA[<p>Blog features are powered by the blog plugin. Simply add files to the <code>blog</code> directory. It supports tags as well!</p><p>Delete the whole directory if you don&#x27;t want the blog features. As simple as that!</p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Hello]]></title>
@@ -132,6 +155,7 @@
             <guid>hello-world</guid>
             <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
             <description><![CDATA[Welcome to this blog. This blog is created with Docusaurus 2.]]></description>
+            <content:encoded><![CDATA[<p>Welcome to this blog. This blog is created with <a href="https://docusaurus.io/"><strong>Docusaurus 2</strong></a>.</p><p>This is a test post.</p><p>A whole bunch of other information.</p>]]></content:encoded>
         </item>
     </channel>
 </rss>
