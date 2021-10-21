@@ -4,7 +4,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: "pEIIII's websITE",
-  tagline: "伟大的征程必定充满荆棘与坎坷",
+  tagline: "达则兼济天下，穷则独善其身",
   url: "https://p.eiooie.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -26,6 +26,12 @@ module.exports = {
           docId: "intro",
           position: "left",
           label: "知识库"
+        },
+        {
+          to: "/docs-self/Intro", // ./docs/Intro.md
+          label: "修身",
+          position: "left",
+          activeBaseRegex: `/docs-self/`
         },
         { to: "/blog", label: "博客", position: "left" },
         { to: "/blog-archive", label: "归档", position: "left" },
@@ -112,6 +118,15 @@ module.exports = {
     ]
   ],
   plugins: [
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "docs-self",
+        path: "docs-self",
+        routeBasePath: "docs-self",
+        sidebarPath: require.resolve("./sidebars.js")
+      }
+    ],
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
