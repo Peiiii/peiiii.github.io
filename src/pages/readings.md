@@ -9,3 +9,5 @@ title: 文章分享
 - [“相信自己”的意义，被过分夸大了](https://36kr.com/p/1365886033773957)
 
 - [普通人如何拥有网络思维？](https://36kr.com/p/1429154432794240)
+
+- [什么叫内卷？](https://mp.weixin.qq.com/s/iDkLwPius8n46LdjG3W67g)
