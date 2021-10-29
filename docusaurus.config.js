@@ -29,7 +29,7 @@ module.exports = {
         },
         {
           to: "/docs-self/Intro", // ./docs/Intro.md
-          label: "修身",
+          label: "内省",
           position: "left",
           activeBaseRegex: `/docs-self/`
         },
