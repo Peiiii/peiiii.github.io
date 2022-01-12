@@ -11,3 +11,5 @@ title: 文章分享
 - [普通人如何拥有网络思维？](https://36kr.com/p/1429154432794240)
 
 - [什么叫内卷？](https://mp.weixin.qq.com/s/iDkLwPius8n46LdjG3W67g)
+
+-[2030 年：四大可预见趋势，将带动十大产业指数级增长](https://36kr.com/p/1565468994801538)
