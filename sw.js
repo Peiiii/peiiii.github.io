@@ -155,7 +155,8 @@ expectedClass, details) => {
 };
 const isOneOf = (value, validValues, details) => {
     if (!validValues.includes(value)) {
-        details['validValueDescription'] = `Valid values are ${JSON.stringify(validValues)}.`;
+        details['validValueDescription'] =
+            `Valid values are ${JSON.stringify(validValues)}.`;
         throw new _private_WorkboxError_js__WEBPACK_IMPORTED_MODULE_0__.WorkboxError('invalid-value', details);
     }
 };
@@ -173,16 +174,14 @@ details) => {
         }
     }
 };
-const finalAssertExports =  false
-    ? 0
-    : {
-        hasMethod,
-        isArray,
-        isInstance,
-        isOneOf,
-        isType,
-        isArrayOfClass,
-    };
+const finalAssertExports =  false ? 0 : {
+    hasMethod,
+    isArray,
+    isInstance,
+    isOneOf,
+    isType,
+    isArrayOfClass,
+};
 
 
 
@@ -465,63 +464,61 @@ __webpack_require__.r(__webpack_exports__);
   https://opensource.org/licenses/MIT.
 */
 
-const logger = ( false
-    ? 0
-    : (() => {
-        // Don't overwrite this value if it's already set.
-        // See https://github.com/GoogleChrome/workbox/pull/2284#issuecomment-560470923
-        if (!('__WB_DISABLE_DEV_LOGS' in self)) {
-            self.__WB_DISABLE_DEV_LOGS = false;
+const logger = ( false ? 0 : (() => {
+    // Don't overwrite this value if it's already set.
+    // See https://github.com/GoogleChrome/workbox/pull/2284#issuecomment-560470923
+    if (!('__WB_DISABLE_DEV_LOGS' in self)) {
+        self.__WB_DISABLE_DEV_LOGS = false;
+    }
+    let inGroup = false;
+    const methodToColorMap = {
+        debug: `#7f8c8d`,
+        log: `#2ecc71`,
+        warn: `#f39c12`,
+        error: `#c0392b`,
+        groupCollapsed: `#3498db`,
+        groupEnd: null,
+    };
+    const print = function (method, args) {
+        if (self.__WB_DISABLE_DEV_LOGS) {
+            return;
         }
-        let inGroup = false;
-        const methodToColorMap = {
-            debug: `#7f8c8d`,
-            log: `#2ecc71`,
-            warn: `#f39c12`,
-            error: `#c0392b`,
-            groupCollapsed: `#3498db`,
-            groupEnd: null, // No colored prefix on groupEnd
-        };
-        const print = function (method, args) {
-            if (self.__WB_DISABLE_DEV_LOGS) {
+        if (method === 'groupCollapsed') {
+            // Safari doesn't print all console.groupCollapsed() arguments:
+            // https://bugs.webkit.org/show_bug.cgi?id=182754
+            if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+                console[method](...args);
                 return;
             }
-            if (method === 'groupCollapsed') {
-                // Safari doesn't print all console.groupCollapsed() arguments:
-                // https://bugs.webkit.org/show_bug.cgi?id=182754
-                if (/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
-                    console[method](...args);
-                    return;
-                }
-            }
-            const styles = [
-                `background: ${methodToColorMap[method]}`,
-                `border-radius: 0.5em`,
-                `color: white`,
-                `font-weight: bold`,
-                `padding: 2px 0.5em`,
-            ];
-            // When in a group, the workbox prefix is not displayed.
-            const logPrefix = inGroup ? [] : ['%cworkbox', styles.join(';')];
-            console[method](...logPrefix, ...args);
-            if (method === 'groupCollapsed') {
-                inGroup = true;
-            }
-            if (method === 'groupEnd') {
-                inGroup = false;
-            }
-        };
-        // eslint-disable-next-line @typescript-eslint/ban-types
-        const api = {};
-        const loggerMethods = Object.keys(methodToColorMap);
-        for (const key of loggerMethods) {
-            const method = key;
-            api[method] = (...args) => {
-                print(method, args);
-            };
         }
-        return api;
-    })());
+        const styles = [
+            `background: ${methodToColorMap[method]}`,
+            `border-radius: 0.5em`,
+            `color: white`,
+            `font-weight: bold`,
+            `padding: 2px 0.5em`,
+        ];
+        // When in a group, the workbox prefix is not displayed.
+        const logPrefix = inGroup ? [] : ['%cworkbox', styles.join(';')];
+        console[method](...logPrefix, ...args);
+        if (method === 'groupCollapsed') {
+            inGroup = true;
+        }
+        if (method === 'groupEnd') {
+            inGroup = false;
+        }
+    };
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    const api = {};
+    const loggerMethods = Object.keys(methodToColorMap);
+    for (const key of loggerMethods) {
+        const method = key;
+        api[method] = (...args) => {
+            print(method, args);
+        };
+    }
+    return api;
+})());
 
 
 
@@ -608,7 +605,7 @@ function waitUntil(event, asyncFn) {
 
 // @ts-ignore
 try {
-    self['workbox:core:6.4.0'] && _();
+    self['workbox:core:6.2.4'] && _();
 }
 catch (e) { }
 
@@ -680,9 +677,8 @@ async function copyResponse(response, modifier) {
     // Create the new response from the body stream and `ResponseInit`
     // modifications. Note: not all browsers support the Response.body stream,
     // so fall back to reading the entire body into memory as a blob.
-    const body = (0,_private_canConstructResponseFromBodyStream_js__WEBPACK_IMPORTED_MODULE_0__.canConstructResponseFromBodyStream)()
-        ? clonedResponse.body
-        : await clonedResponse.blob();
+    const body = (0,_private_canConstructResponseFromBodyStream_js__WEBPACK_IMPORTED_MODULE_0__.canConstructResponseFromBodyStream)() ?
+        clonedResponse.body : await clonedResponse.blob();
     return new Response(body, modifiedResponseInit);
 }
 
@@ -726,7 +722,8 @@ const generatorFunction = (code, details = {}) => {
     }
     return message(details);
 };
-const messageGenerator =  false ? 0 : generatorFunction;
+const messageGenerator = ( false) ?
+    0 : generatorFunction;
 
 
 /***/ }),
@@ -756,183 +753,182 @@ const messages = {
         if (!paramName || !validValueDescription) {
             throw new Error(`Unexpected input to 'invalid-value' error.`);
         }
-        return (`The '${paramName}' parameter was given a value with an ` +
+        return `The '${paramName}' parameter was given a value with an ` +
             `unexpected value. ${validValueDescription} Received a value of ` +
-            `${JSON.stringify(value)}.`);
+            `${JSON.stringify(value)}.`;
     },
     'not-an-array': ({ moduleName, className, funcName, paramName }) => {
         if (!moduleName || !className || !funcName || !paramName) {
             throw new Error(`Unexpected input to 'not-an-array' error.`);
         }
-        return (`The parameter '${paramName}' passed into ` +
-            `'${moduleName}.${className}.${funcName}()' must be an array.`);
+        return `The parameter '${paramName}' passed into ` +
+            `'${moduleName}.${className}.${funcName}()' must be an array.`;
     },
-    'incorrect-type': ({ expectedType, paramName, moduleName, className, funcName, }) => {
+    'incorrect-type': ({ expectedType, paramName, moduleName, className, funcName }) => {
         if (!expectedType || !paramName || !moduleName || !funcName) {
             throw new Error(`Unexpected input to 'incorrect-type' error.`);
         }
         const classNameStr = className ? `${className}.` : '';
-        return (`The parameter '${paramName}' passed into ` +
+        return `The parameter '${paramName}' passed into ` +
             `'${moduleName}.${classNameStr}` +
-            `${funcName}()' must be of type ${expectedType}.`);
+            `${funcName}()' must be of type ${expectedType}.`;
     },
-    'incorrect-class': ({ expectedClassName, paramName, moduleName, className, funcName, isReturnValueProblem, }) => {
+    'incorrect-class': ({ expectedClassName, paramName, moduleName, className, funcName, isReturnValueProblem }) => {
         if (!expectedClassName || !moduleName || !funcName) {
             throw new Error(`Unexpected input to 'incorrect-class' error.`);
         }
         const classNameStr = className ? `${className}.` : '';
         if (isReturnValueProblem) {
-            return (`The return value from ` +
+            return `The return value from ` +
                 `'${moduleName}.${classNameStr}${funcName}()' ` +
-                `must be an instance of class ${expectedClassName}.`);
+                `must be an instance of class ${expectedClassName}.`;
         }
-        return (`The parameter '${paramName}' passed into ` +
+        return `The parameter '${paramName}' passed into ` +
             `'${moduleName}.${classNameStr}${funcName}()' ` +
-            `must be an instance of class ${expectedClassName}.`);
+            `must be an instance of class ${expectedClassName}.`;
     },
-    'missing-a-method': ({ expectedMethod, paramName, moduleName, className, funcName, }) => {
-        if (!expectedMethod ||
-            !paramName ||
-            !moduleName ||
-            !className ||
-            !funcName) {
+    'missing-a-method': ({ expectedMethod, paramName, moduleName, className, funcName }) => {
+        if (!expectedMethod || !paramName || !moduleName || !className
+            || !funcName) {
             throw new Error(`Unexpected input to 'missing-a-method' error.`);
         }
-        return (`${moduleName}.${className}.${funcName}() expected the ` +
-            `'${paramName}' parameter to expose a '${expectedMethod}' method.`);
+        return `${moduleName}.${className}.${funcName}() expected the ` +
+            `'${paramName}' parameter to expose a '${expectedMethod}' method.`;
     },
     'add-to-cache-list-unexpected-type': ({ entry }) => {
-        return (`An unexpected entry was passed to ` +
+        return `An unexpected entry was passed to ` +
             `'workbox-precaching.PrecacheController.addToCacheList()' The entry ` +
             `'${JSON.stringify(entry)}' isn't supported. You must supply an array of ` +
             `strings with one or more characters, objects with a url property or ` +
-            `Request objects.`);
+            `Request objects.`;
     },
     'add-to-cache-list-conflicting-entries': ({ firstEntry, secondEntry }) => {
         if (!firstEntry || !secondEntry) {
-            throw new Error(`Unexpected input to ` + `'add-to-cache-list-duplicate-entries' error.`);
+            throw new Error(`Unexpected input to ` +
+                `'add-to-cache-list-duplicate-entries' error.`);
         }
-        return (`Two of the entries passed to ` +
+        return `Two of the entries passed to ` +
             `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` +
             `${firstEntry} but different revision details. Workbox is ` +
             `unable to cache and version the asset correctly. Please remove one ` +
-            `of the entries.`);
+            `of the entries.`;
     },
     'plugin-error-request-will-fetch': ({ thrownErrorMessage }) => {
         if (!thrownErrorMessage) {
-            throw new Error(`Unexpected input to ` + `'plugin-error-request-will-fetch', error.`);
+            throw new Error(`Unexpected input to ` +
+                `'plugin-error-request-will-fetch', error.`);
         }
-        return (`An error was thrown by a plugins 'requestWillFetch()' method. ` +
-            `The thrown error message was: '${thrownErrorMessage}'.`);
+        return `An error was thrown by a plugins 'requestWillFetch()' method. ` +
+            `The thrown error message was: '${thrownErrorMessage}'.`;
     },
     'invalid-cache-name': ({ cacheNameId, value }) => {
         if (!cacheNameId) {
             throw new Error(`Expected a 'cacheNameId' for error 'invalid-cache-name'`);
         }
-        return (`You must provide a name containing at least one character for ` +
+        return `You must provide a name containing at least one character for ` +
             `setCacheDetails({${cacheNameId}: '...'}). Received a value of ` +
-            `'${JSON.stringify(value)}'`);
+            `'${JSON.stringify(value)}'`;
     },
     'unregister-route-but-not-found-with-method': ({ method }) => {
         if (!method) {
             throw new Error(`Unexpected input to ` +
                 `'unregister-route-but-not-found-with-method' error.`);
         }
-        return (`The route you're trying to unregister was not  previously ` +
-            `registered for the method type '${method}'.`);
+        return `The route you're trying to unregister was not  previously ` +
+            `registered for the method type '${method}'.`;
     },
     'unregister-route-route-not-registered': () => {
-        return (`The route you're trying to unregister was not previously ` +
-            `registered.`);
+        return `The route you're trying to unregister was not previously ` +
+            `registered.`;
     },
     'queue-replay-failed': ({ name }) => {
         return `Replaying the background sync queue '${name}' failed.`;
     },
     'duplicate-queue-name': ({ name }) => {
-        return (`The Queue name '${name}' is already being used. ` +
-            `All instances of backgroundSync.Queue must be given unique names.`);
+        return `The Queue name '${name}' is already being used. ` +
+            `All instances of backgroundSync.Queue must be given unique names.`;
     },
     'expired-test-without-max-age': ({ methodName, paramName }) => {
-        return (`The '${methodName}()' method can only be used when the ` +
-            `'${paramName}' is used in the constructor.`);
+        return `The '${methodName}()' method can only be used when the ` +
+            `'${paramName}' is used in the constructor.`;
     },
     'unsupported-route-type': ({ moduleName, className, funcName, paramName }) => {
-        return (`The supplied '${paramName}' parameter was an unsupported type. ` +
+        return `The supplied '${paramName}' parameter was an unsupported type. ` +
             `Please check the docs for ${moduleName}.${className}.${funcName} for ` +
-            `valid input types.`);
+            `valid input types.`;
     },
-    'not-array-of-class': ({ value, expectedClass, moduleName, className, funcName, paramName, }) => {
-        return (`The supplied '${paramName}' parameter must be an array of ` +
+    'not-array-of-class': ({ value, expectedClass, moduleName, className, funcName, paramName }) => {
+        return `The supplied '${paramName}' parameter must be an array of ` +
             `'${expectedClass}' objects. Received '${JSON.stringify(value)},'. ` +
             `Please check the call to ${moduleName}.${className}.${funcName}() ` +
-            `to fix the issue.`);
+            `to fix the issue.`;
     },
     'max-entries-or-age-required': ({ moduleName, className, funcName }) => {
-        return (`You must define either config.maxEntries or config.maxAgeSeconds` +
-            `in ${moduleName}.${className}.${funcName}`);
+        return `You must define either config.maxEntries or config.maxAgeSeconds` +
+            `in ${moduleName}.${className}.${funcName}`;
     },
     'statuses-or-headers-required': ({ moduleName, className, funcName }) => {
-        return (`You must define either config.statuses or config.headers` +
-            `in ${moduleName}.${className}.${funcName}`);
+        return `You must define either config.statuses or config.headers` +
+            `in ${moduleName}.${className}.${funcName}`;
     },
     'invalid-string': ({ moduleName, funcName, paramName }) => {
         if (!paramName || !moduleName || !funcName) {
             throw new Error(`Unexpected input to 'invalid-string' error.`);
         }
-        return (`When using strings, the '${paramName}' parameter must start with ` +
+        return `When using strings, the '${paramName}' parameter must start with ` +
             `'http' (for cross-origin matches) or '/' (for same-origin matches). ` +
             `Please see the docs for ${moduleName}.${funcName}() for ` +
-            `more info.`);
+            `more info.`;
     },
     'channel-name-required': () => {
-        return (`You must provide a channelName to construct a ` +
-            `BroadcastCacheUpdate instance.`);
+        return `You must provide a channelName to construct a ` +
+            `BroadcastCacheUpdate instance.`;
     },
     'invalid-responses-are-same-args': () => {
-        return (`The arguments passed into responsesAreSame() appear to be ` +
-            `invalid. Please ensure valid Responses are used.`);
+        return `The arguments passed into responsesAreSame() appear to be ` +
+            `invalid. Please ensure valid Responses are used.`;
     },
     'expire-custom-caches-only': () => {
-        return (`You must provide a 'cacheName' property when using the ` +
-            `expiration plugin with a runtime caching strategy.`);
+        return `You must provide a 'cacheName' property when using the ` +
+            `expiration plugin with a runtime caching strategy.`;
     },
     'unit-must-be-bytes': ({ normalizedRangeHeader }) => {
         if (!normalizedRangeHeader) {
             throw new Error(`Unexpected input to 'unit-must-be-bytes' error.`);
         }
-        return (`The 'unit' portion of the Range header must be set to 'bytes'. ` +
-            `The Range header provided was "${normalizedRangeHeader}"`);
+        return `The 'unit' portion of the Range header must be set to 'bytes'. ` +
+            `The Range header provided was "${normalizedRangeHeader}"`;
     },
     'single-range-only': ({ normalizedRangeHeader }) => {
         if (!normalizedRangeHeader) {
             throw new Error(`Unexpected input to 'single-range-only' error.`);
         }
-        return (`Multiple ranges are not supported. Please use a  single start ` +
+        return `Multiple ranges are not supported. Please use a  single start ` +
             `value, and optional end value. The Range header provided was ` +
-            `"${normalizedRangeHeader}"`);
+            `"${normalizedRangeHeader}"`;
     },
     'invalid-range-values': ({ normalizedRangeHeader }) => {
         if (!normalizedRangeHeader) {
             throw new Error(`Unexpected input to 'invalid-range-values' error.`);
         }
-        return (`The Range header is missing both start and end values. At least ` +
+        return `The Range header is missing both start and end values. At least ` +
             `one of those values is needed. The Range header provided was ` +
-            `"${normalizedRangeHeader}"`);
+            `"${normalizedRangeHeader}"`;
     },
     'no-range-header': () => {
         return `No Range header was found in the Request provided.`;
     },
     'range-not-satisfiable': ({ size, start, end }) => {
-        return (`The start (${start}) and end (${end}) values in the Range are ` +
-            `not satisfiable by the cached response, which is ${size} bytes.`);
+        return `The start (${start}) and end (${end}) values in the Range are ` +
+            `not satisfiable by the cached response, which is ${size} bytes.`;
     },
     'attempt-to-cache-non-get-request': ({ url, method }) => {
-        return (`Unable to cache '${url}' because it is a '${method}' request and ` +
-            `only 'GET' requests can be cached.`);
+        return `Unable to cache '${url}' because it is a '${method}' request and ` +
+            `only 'GET' requests can be cached.`;
     },
     'cache-put-with-no-response': ({ url }) => {
-        return (`There was an attempt to cache '${url}' but the response was not ` +
-            `defined.`);
+        return `There was an attempt to cache '${url}' but the response was not ` +
+            `defined.`;
     },
     'no-response': ({ url, error }) => {
         let message = `The strategy could not generate a response for '${url}'.`;
@@ -942,24 +938,24 @@ const messages = {
         return message;
     },
     'bad-precaching-response': ({ url, status }) => {
-        return (`The precaching request for '${url}' failed` +
-            (status ? ` with an HTTP status of ${status}.` : `.`));
+        return `The precaching request for '${url}' failed` +
+            (status ? ` with an HTTP status of ${status}.` : `.`);
     },
     'non-precached-url': ({ url }) => {
-        return (`createHandlerBoundToURL('${url}') was called, but that URL is ` +
-            `not precached. Please pass in a URL that is precached instead.`);
+        return `createHandlerBoundToURL('${url}') was called, but that URL is ` +
+            `not precached. Please pass in a URL that is precached instead.`;
     },
     'add-to-cache-list-conflicting-integrities': ({ url }) => {
-        return (`Two of the entries passed to ` +
+        return `Two of the entries passed to ` +
             `'workbox-precaching.PrecacheController.addToCacheList()' had the URL ` +
-            `${url} with different integrity values. Please remove one of them.`);
+            `${url} with different integrity values. Please remove one of them.`;
     },
     'missing-precache-entry': ({ cacheName, url }) => {
         return `Unable to find a precached response in ${cacheName} for ${url}.`;
     },
     'cross-origin-copy-response': ({ origin }) => {
-        return (`workbox-core.copyResponse() can only be used with same-origin ` +
-            `responses. It was passed a response with origin ${origin}.`);
+        return `workbox-core.copyResponse() can only be used with same-origin ` +
+            `responses. It was passed a response with origin ${origin}.`;
     },
 };
 
@@ -1053,7 +1049,7 @@ class PrecacheController {
      * @param {boolean} [options.fallbackToNetwork=true] Whether to attempt to
      * get the response from the network if there's a precache miss.
      */
-    constructor({ cacheName, plugins = [], fallbackToNetwork = true, } = {}) {
+    constructor({ cacheName, plugins = [], fallbackToNetwork = true } = {}) {
         this._urlsToCacheKeys = new Map();
         this._urlsToCacheModes = new Map();
         this._cacheKeysToIntegrities = new Map();
@@ -1120,7 +1116,8 @@ class PrecacheController {
                 urlsToWarnAbout.push(entry.url);
             }
             const { cacheKey, url } = (0,_utils_createCacheKey_js__WEBPACK_IMPORTED_MODULE_5__.createCacheKey)(entry);
-            const cacheMode = typeof entry !== 'string' && entry.revision ? 'reload' : 'default';
+            const cacheMode = (typeof entry !== 'string' && entry.revision) ?
+                'reload' : 'default';
             if (this._urlsToCacheKeys.has(url) &&
                 this._urlsToCacheKeys.get(url) !== cacheKey) {
                 throw new workbox_core_private_WorkboxError_js__WEBPACK_IMPORTED_MODULE_3__.WorkboxError('add-to-cache-list-conflicting-entries', {
@@ -1251,14 +1248,6 @@ class PrecacheController {
         return this._urlsToCacheKeys.get(urlObject.href);
     }
     /**
-     * @param {string} url A cache key whose SRI you want to look up.
-     * @return {string} The subresource integrity associated with the cache key,
-     * or undefined if it's not set.
-     */
-    getIntegrityForCacheKey(cacheKey) {
-        return this._cacheKeysToIntegrities.get(cacheKey);
-    }
-    /**
      * This acts as a drop-in replacement for
      * [`cache.match()`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match)
      * with the following differences:
@@ -1357,7 +1346,7 @@ class PrecacheFallbackPlugin {
      *     PrecacheController instance. If not provided, the default
      *     PrecacheController will be used.
      */
-    constructor({ fallbackURL, precacheController, }) {
+    constructor({ fallbackURL, precacheController }) {
         /**
          * @return {Promise<Response>} The precache response for the fallback URL.
          *
@@ -1365,8 +1354,8 @@ class PrecacheFallbackPlugin {
          */
         this.handlerDidError = () => this._precacheController.matchPrecache(this._fallbackURL);
         this._fallbackURL = fallbackURL;
-        this._precacheController =
-            precacheController || (0,_utils_getOrCreatePrecacheController_js__WEBPACK_IMPORTED_MODULE_0__.getOrCreatePrecacheController)();
+        this._precacheController = precacheController ||
+            (0,_utils_getOrCreatePrecacheController_js__WEBPACK_IMPORTED_MODULE_0__.getOrCreatePrecacheController)();
     }
 }
 
@@ -1429,17 +1418,17 @@ class PrecacheRoute extends workbox_routing_Route_js__WEBPACK_IMPORTED_MODULE_2_
      * alternative URLs that should be checked for precache matches.
      */
     constructor(precacheController, options) {
-        const match = ({ request, }) => {
+        const match = ({ request }) => {
             const urlsToCacheKeys = precacheController.getURLsToCacheKeys();
             for (const possibleURL of (0,_utils_generateURLVariations_js__WEBPACK_IMPORTED_MODULE_3__.generateURLVariations)(request.url, options)) {
                 const cacheKey = urlsToCacheKeys.get(possibleURL);
                 if (cacheKey) {
-                    const integrity = precacheController.getIntegrityForCacheKey(cacheKey);
-                    return { cacheKey, integrity };
+                    return { cacheKey };
                 }
             }
             if (true) {
-                workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.debug(`Precaching did not find a match for ` + (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_1__.getFriendlyURL)(request.url));
+                workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.debug(`Precaching did not find a match for ` +
+                    (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_1__.getFriendlyURL)(request.url));
             }
             return;
         };
@@ -1516,8 +1505,7 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
     constructor(options = {}) {
         options.cacheName = workbox_core_private_cacheNames_js__WEBPACK_IMPORTED_MODULE_1__.cacheNames.getPrecacheName(options.cacheName);
         super(options);
-        this._fallbackToNetwork =
-            options.fallbackToNetwork === false ? false : true;
+        this._fallbackToNetwork = options.fallbackToNetwork === false ? false : true;
         // Redirected responses cannot be used to satisfy a navigation request, so
         // any redirected response must be "copied" rather than cloned, so the new
         // response doesn't contain the `redirected` flag. See:
@@ -1533,49 +1521,28 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
      */
     async _handle(request, handler) {
         const response = await handler.cacheMatch(request);
-        if (response) {
-            return response;
+        if (!response) {
+            // If this is an `install` event then populate the cache. If this is a
+            // `fetch` event (or any other event) then respond with the cached
+            // response.
+            if (handler.event && handler.event.type === 'install') {
+                return await this._handleInstall(request, handler);
+            }
+            return await this._handleFetch(request, handler);
         }
-        // If this is an `install` event for an entry that isn't already cached,
-        // then populate the cache.
-        if (handler.event && handler.event.type === 'install') {
-            return await this._handleInstall(request, handler);
-        }
-        // Getting here means something went wrong. An entry that should have been
-        // precached wasn't found in the cache.
-        return await this._handleFetch(request, handler);
+        return response;
     }
     async _handleFetch(request, handler) {
         let response;
-        const params = (handler.params || {});
-        // Fall back to the network if we're configured to do so.
+        // Fall back to the network if we don't have a cached response
+        // (perhaps due to manual cache cleanup).
         if (this._fallbackToNetwork) {
             if (true) {
                 workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.warn(`The precached response for ` +
                     `${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url)} in ${this.cacheName} was not ` +
-                    `found. Falling back to the network.`);
+                    `found. Falling back to the network instead.`);
             }
-            const integrityInManifest = params.integrity;
-            const integrityInRequest = request.integrity;
-            const noIntegrityConflict = !integrityInRequest || integrityInRequest === integrityInManifest;
-            response = await handler.fetch(new Request(request, {
-                integrity: integrityInRequest || integrityInManifest,
-            }));
-            // It's only "safe" to repair the cache if we're using SRI to guarantee
-            // that the response matches the precache manifest's expectations,
-            // and there's either a) no integrity property in the incoming request
-            // or b) there is an integrity, and it matches the precache manifest.
-            // See https://github.com/GoogleChrome/workbox/issues/2858
-            if (integrityInManifest && noIntegrityConflict) {
-                this._useDefaultCacheabilityPluginIfNeeded();
-                const wasCached = await handler.cachePut(request, response.clone());
-                if (true) {
-                    if (wasCached) {
-                        workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`A response for ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url)} ` +
-                            `was used to "repair" the precache.`);
-                    }
-                }
-            }
+            response = await handler.fetch(request);
         }
         else {
             // This shouldn't normally happen, but there are edge cases:
@@ -1586,11 +1553,17 @@ class PrecacheStrategy extends workbox_strategies_Strategy_js__WEBPACK_IMPORTED_
             });
         }
         if (true) {
-            const cacheKey = params.cacheKey || (await handler.getCacheKey(request, 'read'));
+            // Params in handlers is type any, can't change right now.
+            // eslint-disable-next-line
+            const cacheKey = handler.params && handler.params.cacheKey ||
+                await handler.getCacheKey(request, 'read');
             // Workbox is going to handle the route.
             // print the routing details to the console.
-            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`Precaching is responding to: ` + (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url));
-            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`Serving the precached url: ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(cacheKey instanceof Request ? cacheKey.url : cacheKey)}`);
+            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`Precaching is responding to: ` +
+                (0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(request.url));
+            // cacheKey is type any, can't change right now.
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(`Serving the precached url: ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_2__.getFriendlyURL)(cacheKey.url)}`);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupCollapsed(`View request details here.`);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.log(request);
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.groupEnd();
@@ -1676,82 +1649,14 @@ PrecacheStrategy.defaultPrecacheCacheabilityPlugin = {
             return null;
         }
         return response;
-    },
+    }
 };
 PrecacheStrategy.copyRedirectedCacheableResponsesPlugin = {
     async cacheWillUpdate({ response }) {
         return response.redirected ? await (0,workbox_core_copyResponse_js__WEBPACK_IMPORTED_MODULE_0__.copyResponse)(response) : response;
-    },
+    }
 };
 
-
-
-/***/ }),
-
-/***/ "./node_modules/workbox-precaching/_types.js":
-/*!***************************************************!*\
-  !*** ./node_modules/workbox-precaching/_types.js ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_version.js */ "./node_modules/workbox-precaching/_version.js");
-/* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_version_js__WEBPACK_IMPORTED_MODULE_0__);
-/*
-  Copyright 2018 Google LLC
-
-  Use of this source code is governed by an MIT-style
-  license that can be found in the LICENSE file or at
-  https://opensource.org/licenses/MIT.
-*/
-
-// * * * IMPORTANT! * * *
-// ------------------------------------------------------------------------- //
-// jdsoc type definitions cannot be declared above TypeScript definitions or
-// they'll be stripped from the built `.js` files, and they'll only be in the
-// `d.ts` files, which aren't read by the jsdoc generator. As a result we
-// have to put declare them below.
-/**
- * @typedef {Object} InstallResult
- * @property {Array<string>} updatedURLs List of URLs that were updated during
- * installation.
- * @property {Array<string>} notUpdatedURLs List of URLs that were already up to
- * date.
- *
- * @memberof module:workbox-precaching
- */
-/**
- * @typedef {Object} CleanupResult
- * @property {Array<string>} deletedCacheRequests List of URLs that were deleted
- * while cleaning up the cache.
- *
- * @memberof module:workbox-precaching
- */
-/**
- * @typedef {Object} PrecacheEntry
- * @property {string} url URL to precache.
- * @property {string} [revision] Revision information for the URL.
- * @property {string} [integrity] Integrity metadata that will be used when
- * making the network request for the URL.
- *
- * @memberof module:workbox-precaching
- */
-/**
- * The "urlManipulation" callback can be used to determine if there are any
- * additional permutations of a URL that should be used to check against
- * the available precached files.
- *
- * For example, Workbox supports checking for '/index.html' when the URL
- * '/' is provided. This callback allows additional, custom checks.
- *
- * @callback ~urlManipulation
- * @param {Object} context
- * @param {URL} context.url The request's URL.
- * @return {Array<URL>} To add additional urls to test, return an Array of
- * URLs. Please note that these **should not be strings**, but URL objects.
- *
- * @memberof module:workbox-precaching
- */
 
 
 /***/ }),
@@ -1765,7 +1670,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // @ts-ignore
 try {
-    self['workbox:precaching:6.4.0'] && _();
+    self['workbox:precaching:6.2.4'] && _();
 }
 catch (e) { }
 
@@ -2044,7 +1949,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PrecacheFallbackPlugin_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./PrecacheFallbackPlugin.js */ "./node_modules/workbox-precaching/PrecacheFallbackPlugin.js");
 /* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./_version.js */ "./node_modules/workbox-precaching/_version.js");
 /* harmony import */ var _version_js__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_version_js__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _types_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./_types.js */ "./node_modules/workbox-precaching/_types.js");
 /*
   Copyright 2018 Google LLC
 
@@ -2077,7 +1981,6 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @module workbox-precaching
  */
-
 
 
 
@@ -2256,13 +2159,10 @@ class PrecacheCacheKeyPlugin {
     constructor({ precacheController }) {
         this.cacheKeyWillBeUsed = async ({ request, params, }) => {
             // Params is type any, can't change right now.
-            /* eslint-disable */
-            const cacheKey = (params === null || params === void 0 ? void 0 : params.cacheKey) ||
+            // eslint-disable-next-line
+            const cacheKey = params && params.cacheKey ||
                 this._precacheController.getCacheKeyForURL(request.url);
-            /* eslint-enable */
-            return cacheKey
-                ? new Request(cacheKey, { headers: request.headers })
-                : request;
+            return cacheKey ? new Request(cacheKey) : request;
         };
         this._precacheController = precacheController;
     }
@@ -2310,9 +2210,8 @@ class PrecacheInstallReportPlugin {
         };
         this.cachedResponseWillBeUsed = async ({ event, state, cachedResponse, }) => {
             if (event.type === 'install') {
-                if (state &&
-                    state.originalRequest &&
-                    state.originalRequest instanceof Request) {
+                if (state && state.originalRequest
+                    && state.originalRequest instanceof Request) {
                     // TODO: `state` should never be undefined...
                     const url = state.originalRequest.url;
                     if (cachedResponse) {
@@ -2447,9 +2346,9 @@ const SUBSTRING_TO_FIND = '-precache-';
 const deleteOutdatedCaches = async (currentPrecacheName, substringToFind = SUBSTRING_TO_FIND) => {
     const cacheNames = await self.caches.keys();
     const cacheNamesToDelete = cacheNames.filter((cacheName) => {
-        return (cacheName.includes(substringToFind) &&
+        return cacheName.includes(substringToFind) &&
             cacheName.includes(self.registration.scope) &&
-            cacheName !== currentPrecacheName);
+            cacheName !== currentPrecacheName;
     });
     await Promise.all(cacheNamesToDelete.map((cacheName) => self.caches.delete(cacheName)));
     return cacheNamesToDelete;
@@ -2661,9 +2560,8 @@ function printInstallDetails(urlsToPrecache, urlsAlreadyPrecached) {
     if (precachedCount || alreadyPrecachedCount) {
         let message = `Precaching ${precachedCount} file${precachedCount === 1 ? '' : 's'}.`;
         if (alreadyPrecachedCount > 0) {
-            message +=
-                ` ${alreadyPrecachedCount} ` +
-                    `file${alreadyPrecachedCount === 1 ? ' is' : 's are'} already cached.`;
+            message += ` ${alreadyPrecachedCount} ` +
+                `file${alreadyPrecachedCount === 1 ? ' is' : 's are'} already cached.`;
         }
         workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.groupCollapsed(message);
         _nestedGroup(`View newly precached URLs.`, urlsToPrecache);
@@ -2793,7 +2691,7 @@ class RegExpRoute extends _Route_js__WEBPACK_IMPORTED_MODULE_2__.Route {
             // if it's a cross-origin request.
             // See https://github.com/GoogleChrome/workbox/issues/281 for the context
             // behind this behavior.
-            if (url.origin !== location.origin && result.index !== 0) {
+            if ((url.origin !== location.origin) && (result.index !== 0)) {
                 if (true) {
                     workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_1__.logger.debug(`The regular expression '${regExp.toString()}' only partially matched ` +
                         `against the cross-origin URL '${url.toString()}'. RegExpRoute's will only ` +
@@ -2999,10 +2897,8 @@ class Router {
         // See https://github.com/Microsoft/TypeScript/issues/28357#issuecomment-436484705
         self.addEventListener('message', ((event) => {
             // event.data is type 'any'
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            if (event.data && event.data.type === 'CACHE_URLS') {
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-                const { payload } = event.data;
+            if (event.data && event.data.type === 'CACHE_URLS') { // eslint-disable-line
+                const { payload } = event.data; // eslint-disable-line
                 if (true) {
                     workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_3__.logger.debug(`Caching URLs from the window`, payload.urlsToCache);
                 }
@@ -3036,7 +2932,7 @@ class Router {
      *     registered route can handle the request. If there is no matching
      *     route and there's no `defaultHandler`, `undefined` is returned.
      */
-    handleRequest({ request, event, }) {
+    handleRequest({ request, event }) {
         if (true) {
             workbox_core_private_assert_js__WEBPACK_IMPORTED_MODULE_0__.assert.isInstance(request, Request, {
                 moduleName: 'workbox-routing',
@@ -3063,11 +2959,12 @@ class Router {
         const debugMessages = [];
         if (true) {
             if (handler) {
-                debugMessages.push([`Found a route to handle this request:`, route]);
+                debugMessages.push([
+                    `Found a route to handle this request:`, route,
+                ]);
                 if (params) {
                     debugMessages.push([
-                        `Passing the following params to the route's handler:`,
-                        params,
+                        `Passing the following params to the route's handler:`, params,
                     ]);
                 }
             }
@@ -3115,8 +3012,7 @@ class Router {
         }
         // Get route's catch handler, if it exists
         const catchHandler = route && route.catchHandler;
-        if (responsePromise instanceof Promise &&
-            (this._catchHandler || catchHandler)) {
+        if (responsePromise instanceof Promise && (this._catchHandler || catchHandler)) {
             responsePromise = responsePromise.catch(async (err) => {
                 // If there's a route catch handler, process that first
                 if (catchHandler) {
@@ -3170,7 +3066,7 @@ class Router {
      *     They are populated if a matching route was found or `undefined`
      *     otherwise.
      */
-    findMatchingRoute({ url, sameOrigin, request, event, }) {
+    findMatchingRoute({ url, sameOrigin, request, event }) {
         const routes = this._routes.get(request.method) || [];
         for (const route of routes) {
             let params;
@@ -3194,8 +3090,8 @@ class Router {
                     // Instead of passing an empty array in as params, use undefined.
                     params = undefined;
                 }
-                else if (matchResult.constructor === Object && // eslint-disable-line
-                    Object.keys(matchResult).length === 0) {
+                else if ((matchResult.constructor === Object && // eslint-disable-line
+                    Object.keys(matchResult).length === 0)) {
                     // Instead of passing an empty object in as params, use undefined.
                     params = undefined;
                 }
@@ -3318,7 +3214,7 @@ class Router {
 
 // @ts-ignore
 try {
-    self['workbox:routing:6.4.0'] && _();
+    self['workbox:routing:6.2.4'] && _();
 }
 catch (e) { }
 
@@ -3388,12 +3284,11 @@ function registerRoute(capture, handler, method) {
             }
             // We want to check if Express-style wildcards are in the pathname only.
             // TODO: Remove this log message in v4.
-            const valueToCheck = capture.startsWith('http')
-                ? captureUrl.pathname
-                : capture;
+            const valueToCheck = capture.startsWith('http') ?
+                captureUrl.pathname : capture;
             // See https://github.com/pillarjs/path-to-regexp#parameters
             const wildcards = '[*:?+]';
-            if (new RegExp(`${wildcards}`).exec(valueToCheck)) {
+            if ((new RegExp(`${wildcards}`)).exec(valueToCheck)) {
                 workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.debug(`The '$capture' parameter contains an Express-style wildcard ` +
                     `character (${wildcards}). Strings are now always interpreted as ` +
                     `exact matches; use a RegExp for partial or wildcard matches.`);
@@ -3401,8 +3296,8 @@ function registerRoute(capture, handler, method) {
         }
         const matchCallback = ({ url }) => {
             if (true) {
-                if (url.pathname === captureUrl.pathname &&
-                    url.origin !== captureUrl.origin) {
+                if ((url.pathname === captureUrl.pathname) &&
+                    (url.origin !== captureUrl.origin)) {
                     workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_0__.logger.debug(`${capture} only partially matches the cross-origin URL ` +
                         `${url.toString()}. This route will only handle cross-origin requests ` +
                         `if they match the entire URL.`);
@@ -3735,9 +3630,9 @@ class Strategy {
             };
         }
         const event = options.event;
-        const request = typeof options.request === 'string'
-            ? new Request(options.request)
-            : options.request;
+        const request = typeof options.request === 'string' ?
+            new Request(options.request) :
+            options.request;
         const params = 'params' in options ? options.params : undefined;
         const handler = new _StrategyHandler_js__WEBPACK_IMPORTED_MODULE_4__.StrategyHandler(this, { event, request, params });
         const responseDone = this._getResponse(handler, request, event);
@@ -3875,7 +3770,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function toRequest(input) {
-    return typeof input === 'string' ? new Request(input) : input;
+    return (typeof input === 'string') ? new Request(input) : input;
 }
 /**
  * A class created every time a Strategy instance instance calls
@@ -3984,7 +3879,7 @@ class StrategyHandler {
         if (request.mode === 'navigate' &&
             event instanceof FetchEvent &&
             event.preloadResponse) {
-            const possiblePreloadResponse = (await event.preloadResponse);
+            const possiblePreloadResponse = await event.preloadResponse;
             if (possiblePreloadResponse) {
                 if (true) {
                     workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_5__.logger.log(`Using a preloaded navigation response for ` +
@@ -3996,9 +3891,8 @@ class StrategyHandler {
         // If there is a fetchDidFail plugin, we need to save a clone of the
         // original request before it's either modified by a requestWillFetch
         // plugin or before the original request's body is consumed via fetch().
-        const originalRequest = this.hasCallback('fetchDidFail')
-            ? request.clone()
-            : null;
+        const originalRequest = this.hasCallback('fetchDidFail') ?
+            request.clone() : null;
         try {
             for (const cb of this.iterateCallbacks('requestWillFetch')) {
                 request = await cb({ request: request.clone(), event });
@@ -4006,9 +3900,7 @@ class StrategyHandler {
         }
         catch (err) {
             if (err instanceof Error) {
-                throw new workbox_core_private_WorkboxError_js__WEBPACK_IMPORTED_MODULE_7__.WorkboxError('plugin-error-request-will-fetch', {
-                    thrownErrorMessage: err.message,
-                });
+                throw new workbox_core_private_WorkboxError_js__WEBPACK_IMPORTED_MODULE_7__.WorkboxError('plugin-error-request-will-fetch', { thrownErrorMessage: err.message });
             }
         }
         // The request can be altered by plugins with `requestWillFetch` making
@@ -4018,7 +3910,8 @@ class StrategyHandler {
         try {
             let fetchResponse;
             // See https://github.com/GoogleChrome/workbox/issues/1796
-            fetchResponse = await fetch(request, request.mode === 'navigate' ? undefined : this._strategy.fetchOptions);
+            fetchResponse = await fetch(request, request.mode === 'navigate' ?
+                undefined : this._strategy.fetchOptions);
             if (true) {
                 workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_5__.logger.debug(`Network request for ` +
                     `'${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_4__.getFriendlyURL)(request.url)}' returned a response with ` +
@@ -4095,14 +3988,13 @@ class StrategyHandler {
             }
         }
         for (const callback of this.iterateCallbacks('cachedResponseWillBeUsed')) {
-            cachedResponse =
-                (await callback({
-                    cacheName,
-                    matchOptions,
-                    cachedResponse,
-                    request: effectiveRequest,
-                    event: this.event,
-                })) || undefined;
+            cachedResponse = (await callback({
+                cacheName,
+                matchOptions,
+                cachedResponse,
+                request: effectiveRequest,
+                event: this.event,
+            })) || undefined;
         }
         return cachedResponse;
     }
@@ -4134,14 +4026,6 @@ class StrategyHandler {
                     method: effectiveRequest.method,
                 });
             }
-            // See https://github.com/GoogleChrome/workbox/issues/2818
-            const vary = response.headers.get('Vary');
-            if (vary) {
-                workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_5__.logger.debug(`The response for ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_4__.getFriendlyURL)(effectiveRequest.url)} ` +
-                    `has a 'Vary: ${vary}' header. ` +
-                    `Consider setting the {ignoreVary: true} option on your strategy ` +
-                    `to ensure cache matching and deletion works as expected.`);
-            }
         }
         if (!response) {
             if (true) {
@@ -4163,19 +4047,19 @@ class StrategyHandler {
         const { cacheName, matchOptions } = this._strategy;
         const cache = await self.caches.open(cacheName);
         const hasCacheUpdateCallback = this.hasCallback('cacheDidUpdate');
-        const oldResponse = hasCacheUpdateCallback
-            ? await (0,workbox_core_private_cacheMatchIgnoreParams_js__WEBPACK_IMPORTED_MODULE_1__.cacheMatchIgnoreParams)(
-            // TODO(philipwalton): the `__WB_REVISION__` param is a precaching
-            // feature. Consider into ways to only add this behavior if using
-            // precaching.
-            cache, effectiveRequest.clone(), ['__WB_REVISION__'], matchOptions)
-            : null;
+        const oldResponse = hasCacheUpdateCallback ? await (0,workbox_core_private_cacheMatchIgnoreParams_js__WEBPACK_IMPORTED_MODULE_1__.cacheMatchIgnoreParams)(
+        // TODO(philipwalton): the `__WB_REVISION__` param is a precaching
+        // feature. Consider into ways to only add this behavior if using
+        // precaching.
+        cache, effectiveRequest.clone(), ['__WB_REVISION__'], matchOptions) :
+            null;
         if (true) {
             workbox_core_private_logger_js__WEBPACK_IMPORTED_MODULE_5__.logger.debug(`Updating the '${cacheName}' cache with a new Response ` +
                 `for ${(0,workbox_core_private_getFriendlyURL_js__WEBPACK_IMPORTED_MODULE_4__.getFriendlyURL)(effectiveRequest.url)}.`);
         }
         try {
-            await cache.put(effectiveRequest, hasCacheUpdateCallback ? responseToCache.clone() : responseToCache);
+            await cache.put(effectiveRequest, hasCacheUpdateCallback ?
+                responseToCache.clone() : responseToCache);
         }
         catch (error) {
             if (error instanceof Error) {
@@ -4209,8 +4093,7 @@ class StrategyHandler {
      * @return {Promise<Request>}
      */
     async getCacheKey(request, mode) {
-        const key = `${request.url} | ${mode}`;
-        if (!this._cacheKeys[key]) {
+        if (!this._cacheKeys[mode]) {
             let effectiveRequest = request;
             for (const callback of this.iterateCallbacks('cacheKeyWillBeUsed')) {
                 effectiveRequest = toRequest(await callback({
@@ -4218,12 +4101,12 @@ class StrategyHandler {
                     request: effectiveRequest,
                     event: this.event,
                     // params has a type any can't change right now.
-                    params: this.params, // eslint-disable-line
+                    params: this.params,
                 }));
             }
-            this._cacheKeys[key] = effectiveRequest;
+            this._cacheKeys[mode] = effectiveRequest;
         }
-        return this._cacheKeys[key];
+        return this._cacheKeys[mode];
     }
     /**
      * Returns true if the strategy has at least one plugin with the given
@@ -4315,7 +4198,7 @@ class StrategyHandler {
      */
     async doneWaiting() {
         let promise;
-        while ((promise = this._extendLifetimePromises.shift())) {
+        while (promise = this._extendLifetimePromises.shift()) {
             await promise;
         }
     }
@@ -4340,12 +4223,11 @@ class StrategyHandler {
         let responseToCache = response;
         let pluginsUsed = false;
         for (const callback of this.iterateCallbacks('cacheWillUpdate')) {
-            responseToCache =
-                (await callback({
-                    request: this.request,
-                    response: responseToCache,
-                    event: this.event,
-                })) || undefined;
+            responseToCache = (await callback({
+                request: this.request,
+                response: responseToCache,
+                event: this.event,
+            })) || undefined;
             pluginsUsed = true;
             if (!responseToCache) {
                 break;
@@ -4389,7 +4271,7 @@ class StrategyHandler {
 
 // @ts-ignore
 try {
-    self['workbox:strategies:6.4.0'] && _();
+    self['workbox:strategies:6.2.4'] && _();
 }
 catch (e) { }
 
@@ -4561,7 +4443,7 @@ function getPossibleURLs(url) {
 (async () => {
   const params = parseSwParams();
 
-  const precacheManifest = [{"revision":"469235cb46888c64aa51ff25f8c913fd","url":"404.html"},{"revision":"aaff6965e40a65e50a6e0307743f64f0","url":"about/index.html"},{"revision":"96c2a5d74e54ee5989deb805dd07d4f4","url":"admin/index.html"},{"revision":"546bc5b936d61b7bc0991d020c9862ce","url":"assets/css/styles.22f6aacd.css"},{"revision":"fbee8bdc58527596d44a671f4ea39dbd","url":"assets/js/01a85c17.2a494ca1.js"},{"revision":"8eb3725a7b3e49b45e94edf9ae4f9aa7","url":"assets/js/028e02bb.23ecdb91.js"},{"revision":"918cb558b39f7f45c5504ea49fed87df","url":"assets/js/03153218.16017595.js"},{"revision":"3d333676085033cef171175eed358ce7","url":"assets/js/031793e1.492b1b06.js"},{"revision":"ddc966cd3f73d41e8752b80b7198c4bc","url":"assets/js/06f8edbc.4c028ca0.js"},{"revision":"15234562e65418f089555fa13db1667c","url":"assets/js/0e384e19.b1885996.js"},{"revision":"446d5398265a8f8acf27236277da96fe","url":"assets/js/134049f5.004f00ce.js"},{"revision":"af880cc2c5b973fdcc38344e77453a9d","url":"assets/js/1758d247.d986f3b4.js"},{"revision":"321300c783586dd69d62c722c3bff13b","url":"assets/js/17896441.8882e1d7.js"},{"revision":"5945e5e470e836b0af06aa72453bd1c4","url":"assets/js/198089f0.8e6f4e9d.js"},{"revision":"6f90b67f76b4daa5cc5bbb70c1131ece","url":"assets/js/1a4e3797.06a9943b.js"},{"revision":"52fadb999e1a1577e630d2ee4e756416","url":"assets/js/1be78505.830e481c.js"},{"revision":"8710e75f64ea4886c66c6f3296826d4c","url":"assets/js/1e65b0cc.1c4c6cb4.js"},{"revision":"59641476f1fb5dec2abfa07009599f33","url":"assets/js/1f391b9e.2f29d5bd.js"},{"revision":"eb5dc16cb34d6fc05a105eb9016bd944","url":"assets/js/2348.21858d10.js"},{"revision":"9857bcb983dbf287c1db963047ff15d0","url":"assets/js/24b69a33.fc53393a.js"},{"revision":"08516d37cf98d39d92fcc1161321dfc4","url":"assets/js/26f02342.0842ec34.js"},{"revision":"ccfe1ce2abc080851a9ab8d8cc45a4a6","url":"assets/js/2868cdab.d5e98155.js"},{"revision":"4e6c26941634463ce48959d2ccafcf48","url":"assets/js/29038a86.e523e0a1.js"},{"revision":"32de1402caf267db1e45df7f93f3e1a4","url":"assets/js/295788ab.99fe2e89.js"},{"revision":"08b1358fa85c6becb7f226c0dfa0ff43","url":"assets/js/2c1e1cda.fe2df9b0.js"},{"revision":"15da5dfad491242a75832f9dfa7d9089","url":"assets/js/2e9f4025.343c1be1.js"},{"revision":"be9a5b8354c4951422f530ebcb1c3f63","url":"assets/js/2f216b64.37a323f9.js"},{"revision":"8084d0274a6769f76b6f98c17abcca29","url":"assets/js/2fd064e1.5bdb4f5f.js"},{"revision":"0d48ccf32a44bda85f23e483b80dde71","url":"assets/js/30a24c52.7d2e3366.js"},{"revision":"e7a92bb0e0f559015fe092078d1814a3","url":"assets/js/313c10d3.38b294f1.js"},{"revision":"d6a240e10587f9015306d0b078592404","url":"assets/js/321baafb.66f794f3.js"},{"revision":"45f50bdb07b61975d158168276129db3","url":"assets/js/323e3613.3a3a9a7a.js"},{"revision":"088069710b2fc2a0039c79685c6f1320","url":"assets/js/325b4c62.1f85378c.js"},{"revision":"e628f73705177195b553620dd0247354","url":"assets/js/3570154c.0ce4b9d5.js"},{"revision":"a1ab565a5f7707ea25d7962b4f4688f9","url":"assets/js/3829.74738347.js"},{"revision":"1e4d005f0c387c89333854d2a7b39efb","url":"assets/js/393be207.4566f6fc.js"},{"revision":"88885ef479f56a39eea331c699af4e0d","url":"assets/js/3b693608.e4879519.js"},{"revision":"d463b21ff935ea62eceeecb0d9855221","url":"assets/js/3e6cc91f.7bbc13c1.js"},{"revision":"5ed89f6fa836718069adfcdeea3bd262","url":"assets/js/4583d8d3.ef378c47.js"},{"revision":"8e8d6c00854cbe0d93c44a3b9170b4ef","url":"assets/js/474d3107.1fe0343f.js"},{"revision":"f6fb667258ee6ce45b6622d69b6ccb0f","url":"assets/js/47c4aa67.6b9ece87.js"},{"revision":"e17711fd7999fa7992a288136082ef54","url":"assets/js/492a2ace.e61b0668.js"},{"revision":"0fa0ff85d66035cf9c275493cc8d8449","url":"assets/js/4c1f76dc.58b12dc7.js"},{"revision":"f4557e131ae8bd3896ef6d4901f12b25","url":"assets/js/4f9a846c.41f566ec.js"},{"revision":"9148e5472459e5ced717a6177c4b25f3","url":"assets/js/5131.f89078b7.js"},{"revision":"c7d6d45e7a69061d4ff208038263e71d","url":"assets/js/546fc57f.69f50ebc.js"},{"revision":"5fc717364aa690fa72fbc3eb79c8f5f5","url":"assets/js/547d9d0e.f6493fbe.js"},{"revision":"8e94ea82cff93c35dfb7f3ae07cf52eb","url":"assets/js/5525.d4027b3e.js"},{"revision":"396ee670785da1731c8e80a03e7ba079","url":"assets/js/59581207.473c79dc.js"},{"revision":"13c26023685d4ecd9ece7a1e2f97965b","url":"assets/js/6167.fe90d52e.js"},{"revision":"6e1cdd8846b92d398c3e89601af80a1d","url":"assets/js/6444.b5d3604c.js"},{"revision":"2bdbdef325512dde3b3914fa56b0a4aa","url":"assets/js/65a36639.124f18bd.js"},{"revision":"ebb33e0035c5acac8b047d75b0510e37","url":"assets/js/6875c492.3a527bc0.js"},{"revision":"ce8caccb48c2a7fa1a5ca7569586af28","url":"assets/js/6d1047ab.24b55dcb.js"},{"revision":"01e50e5ec946750c556fae9e6eea59a7","url":"assets/js/6d7197b8.6f535a9d.js"},{"revision":"38f1aa844ba52d9e26f8051c5649ef4b","url":"assets/js/6e51a3ac.4bcbcebe.js"},{"revision":"46e5df88dafa7b088d279b082a758d80","url":"assets/js/732d2357.1b168fc6.js"},{"revision":"b358f3dd31f097afe474c6478fd82f87","url":"assets/js/7c3edcb6.1e692825.js"},{"revision":"a1f39733a3b23233c7e0bda1053b53f7","url":"assets/js/7dfbeebb.95e1314a.js"},{"revision":"e3f1db5b807fae7764ec17b538c168f0","url":"assets/js/7f7f0193.09815709.js"},{"revision":"979ca19e3e94ff735ea50d13e689fe7b","url":"assets/js/806240b1.b2972c10.js"},{"revision":"5a8e9801b0039339b6f15b8fa18ed083","url":"assets/js/814f3328.13e30d20.js"},{"revision":"42188076236dd88e438314ca2168112d","url":"assets/js/8443.140021ae.js"},{"revision":"ef915edecd6f826d1f54ed364e37c2cc","url":"assets/js/87f26539.8e7089fc.js"},{"revision":"b04863b0fe8f07a38a4d2159f4ce5b7f","url":"assets/js/8890ac7a.e9d79fca.js"},{"revision":"564ac8eca8a8f27b26fe496a31dac3e3","url":"assets/js/8eb4e46b.f5d15b41.js"},{"revision":"95619db2f01bd09067ad0f2d4bd19f2c","url":"assets/js/913a335e.c2e016f5.js"},{"revision":"43ec878878949342ef5aa8915de5e03d","url":"assets/js/917b00f7.f43df4da.js"},{"revision":"255de78ea478b05af1fd12cd6dc8a2c2","url":"assets/js/923.7ef533ec.js"},{"revision":"20d5c52d2f037266cea4ff20e605492c","url":"assets/js/92999a1c.61d6dceb.js"},{"revision":"1ce54fd26f2719cabc511db304bccf7c","url":"assets/js/935f2afb.d566bdfa.js"},{"revision":"3cd0a49bfdd4aefd4850a2da3c0a896f","url":"assets/js/96056db4.c869aaf1.js"},{"revision":"57fb52d74e29319dc347aaeabf865c28","url":"assets/js/97f74fe5.91fca4ef.js"},{"revision":"526ec60f36e7f2df83c4fa8c788f810b","url":"assets/js/989dfd53.876a6133.js"},{"revision":"a0d84a201c8e7fb8d37cb0a221822f4a","url":"assets/js/9c2086ba.a412632d.js"},{"revision":"1adc6d0bd39b8714fbec94e8a4c88a7a","url":"assets/js/9cee6a8e.5656b530.js"},{"revision":"193be6e84dc3e1f60fd6eaf7ceefe597","url":"assets/js/9e4087bc.d3287c78.js"},{"revision":"d728f966808639fa31bd10e83b74e41b","url":"assets/js/a6aa9e1f.3285db52.js"},{"revision":"31bff4a47e38c1bb8ff94fe9e070626c","url":"assets/js/a7023ddc.a070d8cc.js"},{"revision":"dd04a626025cb16b2869e7804839fc7e","url":"assets/js/a740aca6.a404e6f5.js"},{"revision":"bfac744feb69af3b3b846037fe01e551","url":"assets/js/a77d2423.b930ff5a.js"},{"revision":"b151051a2708b042d8e7f565db5d0adc","url":"assets/js/a80da1cf.50bc2bbd.js"},{"revision":"93572212e361989085d3a0ffbbcee011","url":"assets/js/af172acd.3dc2b67a.js"},{"revision":"48ed22560a29e04e6b6be8ca4babb25a","url":"assets/js/affb306b.7d9337e8.js"},{"revision":"d5f78989e9155ce9732f0dbb7a15498c","url":"assets/js/b075f059.1a94dbd4.js"},{"revision":"03dcfcae534a215673b66ccfd4c0107f","url":"assets/js/b2b02a3a.b668c833.js"},{"revision":"02a71aad65b1dc5e22f87a1f42b5b368","url":"assets/js/b2b675dd.b221837a.js"},{"revision":"a9e7c68288595134393ba136b862283a","url":"assets/js/b2f554cd.3571da98.js"},{"revision":"3c13aa4639cb46f9dac7e462363adcaa","url":"assets/js/b335d990.474e2401.js"},{"revision":"ffb4737ac3fbd519db494240cde8a938","url":"assets/js/b9f35430.e6bd88f8.js"},{"revision":"54addead9c93afda9ebcf76860ede348","url":"assets/js/c1d32765.e75adb31.js"},{"revision":"9fa199af664fa47944c6a06da0235d35","url":"assets/js/c2343886.e41bc4aa.js"},{"revision":"e4e8fe4afac41961e6fa09369b2cdcc5","url":"assets/js/c2e4ed6e.672a8ca5.js"},{"revision":"811b44e292319456f8557e38a93c63d4","url":"assets/js/c4f5d8e4.6266fae0.js"},{"revision":"6cfc72329f761e4f6103fcc0cffdba9c","url":"assets/js/c7e645cd.03cb9336.js"},{"revision":"0d9d892f4405ffc8f80e654dc31e421f","url":"assets/js/ccc49370.ba2ddcb2.js"},{"revision":"d07912aac6d841978a85522c7ef9bb8a","url":"assets/js/cd71dd97.4c9c6e67.js"},{"revision":"417cb17d1fe7c2cc8d2ab46277f3afb7","url":"assets/js/d181012a.bf45e99e.js"},{"revision":"7600989e467ed11ca75a668dfa21204e","url":"assets/js/d610846f.096e96e3.js"},{"revision":"815995a06f4cfe6715ec6883e13ff162","url":"assets/js/d93227b1.4b7d2a18.js"},{"revision":"8d6989bde94da4af238580332faaad9a","url":"assets/js/e32489d2.5a184467.js"},{"revision":"dcf63a8b25366bca361cca44804916a7","url":"assets/js/ece6f01b.7bb3468c.js"},{"revision":"36669f36f28ae14f7beee0e489659edb","url":"assets/js/ee8bb330.0c192982.js"},{"revision":"16a813f7f12645ab8b9968623c83db74","url":"assets/js/efbfcd47.9cd1fc09.js"},{"revision":"8a6ef22f3e0bcccffcdb86dc342d8892","url":"assets/js/f6ca0f89.257854e7.js"},{"revision":"44c2f3f44f8e045bc7008e2031ce3a7a","url":"assets/js/f7ae7a07.a68f0605.js"},{"revision":"0aa66e23d7d7c191dac2befd18b77510","url":"assets/js/fa0c351d.5d2eb12a.js"},{"revision":"8b8be4b70975dda6e2f8daa4310d297c","url":"assets/js/faafad80.97faecd5.js"},{"revision":"2a06d47455d50cfc65dd6fe0a1769336","url":"assets/js/main.9770aa62.js"},{"revision":"1acbe57b156fa459f8e21fc8587a8ca9","url":"assets/js/runtime~main.e1ea4853.js"},{"revision":"7f074fa76afd3497963e8444b499e12f","url":"blog-archive/index.html"},{"revision":"1e77e97dbe4b21f2a12225d7d0d1f9eb","url":"blog/2021/08/29/信息源/index.html"},{"revision":"cbf32fc8c8231bb11d84b5d9f9e7fb44","url":"blog/2021/08/30/全新生活空间设计/index.html"},{"revision":"36f24d4a34f3272f1b2ab76f7473e28f","url":"blog/2021/08/30/如何制定计划？/index.html"},{"revision":"eba3f26e21c837625e2dea880ea84271","url":"blog/2021/09/01/个人数字空间/index.html"},{"revision":"18f132f348bbb116ddff4e3eba3647aa","url":"blog/2021/09/01/成功方法论/index.html"},{"revision":"e982e6446cbba0070661cda21a6d12a1","url":"blog/2021/09/02/完美生活/index.html"},{"revision":"f3802fec2f8c38bda8e8288245399a88","url":"blog/2021/09/12/学习之路/index.html"},{"revision":"71c5aba9e90e1616621ed6e2449138b6","url":"blog/2021/09/12/社交牛逼症教程/index.html"},{"revision":"5320361511f65baac520f096788549a0","url":"blog/2021/09/14/人生目标/index.html"},{"revision":"bc816448754a5eeb6efa619bcfee1f0f","url":"blog/2021/09/17/未来的世界是怎样的？/index.html"},{"revision":"08c2200e91f5ca5c3d2ac506e6348ff2","url":"blog/2021/10/10/价值定义、价值创造与价值分配/index.html"},{"revision":"b1e856fdc52c1b75a6cd3234949a54da","url":"blog/2021/10/11/API云平台/index.html"},{"revision":"ca7af918165a1e3f1b8907d81573aed5","url":"blog/2021/10/13/人生之意义/index.html"},{"revision":"c49175c4e8dfad60801a76ddf14e7dc0","url":"blog/2021/10/13/学会生活/index.html"},{"revision":"285ed67ae36d0ac8f6e699898696be65","url":"blog/2021/10/13/智能节点与智能网络/index.html"},{"revision":"a186fd087059097d96a6bf3fe105378b","url":"blog/2021/10/23/全新知识库-一种信息存储架构/index.html"},{"revision":"be8287ec40cd38280b21d2b8230a8ee8","url":"blog/2021/11/13/共产主义的漫谈式畅想/index.html"},{"revision":"f91579f9b9d442134e75af16b8f09891","url":"blog/2021/11/13/练习的一般方法/index.html"},{"revision":"1e6b87687d498b167c918536ee564162","url":"blog/2021/11/13/解决问题的一般方法/index.html"},{"revision":"ffaa2f62ca8f876d5108bc9ac2739bb7","url":"blog/archive/index.html"},{"revision":"7065f83b78f1a82ebfdb9b507d349f9c","url":"blog/hello-world/index.html"},{"revision":"bbdc657d3990eb9841d4eb7a434079be","url":"blog/how-to-build-this-website/index.html"},{"revision":"8ddade35bf33276c923bd1da4ec0ba9d","url":"blog/index.html"},{"revision":"ef42ca5e20dde75948959d122f118fe2","url":"blog/page/2/index.html"},{"revision":"7b41ac45d5de7ede79c82b946c9436fb","url":"blog/page/3/index.html"},{"revision":"6e0c9892c5bb368245f1dc15c14e5ed7","url":"blog/tags/docusaurus/index.html"},{"revision":"f5d8b96679fb4cfa277caf9ae0da3d61","url":"blog/tags/facebook/index.html"},{"revision":"84dee5fdb5c975698e646e461f8af8c8","url":"blog/tags/hello/index.html"},{"revision":"85c4cee54edf7248af332d89ea9795dc","url":"blog/tags/index.html"},{"revision":"e47eb84838178d101b77726f432e3cb8","url":"blog/welcome/index.html"},{"revision":"e912e4d43f0fd37e71e0bc4188818a36","url":"docs-self/intro/index.html"},{"revision":"1e15245aa29c53bfc3d005d70ef757ec","url":"docs/CloudOS/一种强大的新型富文档格式/index.html"},{"revision":"5c9db507d71fb3fa76b524293ddeba71","url":"docs/CloudOS/开发计划/index.html"},{"revision":"8aa2e9d7a5ce8a1e088fb6eb052a975b","url":"docs/CloudOS/整体设计/index.html"},{"revision":"c2fbaee075214d59b8783a1d77da57e7","url":"docs/CloudOS/文件浏览器/index.html"},{"revision":"eeb15697f963c31dd3dc284871509083","url":"docs/CloudOS/文件系统/index.html"},{"revision":"e71f50ad234bcbc4072bef75edb0aa53","url":"docs/CloudOS/方法论/index.html"},{"revision":"3bb819926cfcfe12b8a03545e38c9574","url":"docs/CloudOS/桌面环境/index.html"},{"revision":"db49195496ca9d92daaf3add8f796d02","url":"docs/CloudOS/用户认证与权限管理/index.html"},{"revision":"489d383a12be73b18f8e29089a1ff43a","url":"docs/CloudOS/目标/index.html"},{"revision":"a8b33ef072e0bdba5ced57b82b17dd1b","url":"docs/CloudOS/类vscode编辑器/index.html"},{"revision":"753956954a7d9765c7f3b3266d639c78","url":"docs/Devops/clickhouse/clickhouse双机集群配置/index.html"},{"revision":"eaae31e08d946ea43d46bc70defa9f8b","url":"docs/Devops/mysql/mysql-docker-主从-keepalived/index.html"},{"revision":"f3fac969e0b04c1793748e82c0aaa0c8","url":"docs/Devops/postgresql/postgres-docker-主从配置/index.html"},{"revision":"5f0b459112c8d66544a17d0ac128fb43","url":"docs/Freehub/README/index.html"},{"revision":"d818f40bed11f66fc2676616d3b595bd","url":"docs/intro/index.html"},{"revision":"a081d54dd50d9ea08b82d8a7dd938466","url":"docs/开发/map-layout-docs-body-测试文档，不知道在哪里1/index.html"},{"revision":"cff103c937aab65d214ed3c4ae420921","url":"docs/微服务/Kubernetes/README/index.html"},{"revision":"073a7d968d9335fa0d7a7f283efaec3e","url":"docs/微服务/ServiceMesh/README/index.html"},{"revision":"2f199e744ad2f5d00eb39317dc110f52","url":"docs/微服务/微服务API网关/index.html"},{"revision":"2411f45bcd0cc98c1736f64ec9765810","url":"docs/微服务/微服务架构设计/index.html"},{"revision":"f3707c0352d69a5f0af8ad7a96467b20","url":"docs/微服务/微服务鉴权设计/README/index.html"},{"revision":"eacb32a740f91d07acffa74513cf0d84","url":"docs/记录/优秀的个人博客/index.html"},{"revision":"e06fcd9cd3c82e4f7e611eb90abb5f8b","url":"helloMarkdown/index.html"},{"revision":"7bc827093dfb15ced7cc913c658743e0","url":"helloReact/index.html"},{"revision":"b94cc259a440c2ff6d21abb4844913ca","url":"index.html"},{"revision":"e9ae534d373ae1378f3fdf85f663167d","url":"links/index.html"},{"revision":"e884b74a02f0fed2477ef92526fc975f","url":"manifest.json"},{"revision":"d6eeae4f545d5467e916c3fca587408d","url":"markdown-page/index.html"},{"revision":"0013c67cba5a10600f6bd699ec717f4d","url":"readings/index.html"},{"revision":"89ec64ede3a7cc516a46b7cef56ea316","url":"search-index.json"},{"revision":"2d71daae5fdba86a3aac023b63eaa239","url":"search/index.html"},{"revision":"55770c3382a4eadd3bce61e7b449b300","url":"support/index.html"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/docusaurus.png"},{"revision":"4343e07bf942aefb5f334501958fbc0e","url":"img/favicon.ico"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/logo.svg"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"img/tutorial/docsVersionDropdown.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"img/tutorial/localeDropdown.png"},{"revision":"8d04d316f4d1777793ee773fcbf16cea","url":"img/undraw_docusaurus_mountain.svg"},{"revision":"3d3d63efa464a74e2befd1569465ed21","url":"img/undraw_docusaurus_react.svg"},{"revision":"932b535fc71feb29877bc4b9d708b1d0","url":"img/undraw_docusaurus_tree.svg"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/uploads/docusaurus.png"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/uploads/logo.svg"}];
+  const precacheManifest = [{"revision":"81e20530e33829a3cc0331a123b9d081","url":"404.html"},{"revision":"8f7be58ed5c9933871ddc12b9bf4da55","url":"about/index.html"},{"revision":"96c2a5d74e54ee5989deb805dd07d4f4","url":"admin/index.html"},{"revision":"3a3fa20ea3652e303582fd0d235da563","url":"assets/css/styles.8fb0849f.css"},{"revision":"5c7e48d3d211594b36f215feece577be","url":"assets/js/01a85c17.20c85072.js"},{"revision":"d299d03e777681cbbcdbd90d5c58016d","url":"assets/js/028e02bb.1168fa5f.js"},{"revision":"7a19fc5127fa7091ffa6240c39a41f73","url":"assets/js/03153218.9b22a5a7.js"},{"revision":"3d333676085033cef171175eed358ce7","url":"assets/js/031793e1.1b33a602.js"},{"revision":"0aea00f1d1856dc973c6425eed3130d4","url":"assets/js/06f8edbc.ed9bbc36.js"},{"revision":"0536954789b0846d61b01acd77c0af81","url":"assets/js/0db0076c.ca36403f.js"},{"revision":"15234562e65418f089555fa13db1667c","url":"assets/js/0e384e19.dd3589f2.js"},{"revision":"0e0856f0589d084a29e603e4f6d613c6","url":"assets/js/134049f5.8998a93b.js"},{"revision":"c98080c6c290eab54249116c81755722","url":"assets/js/1758d247.0dc5d6e5.js"},{"revision":"b00d37237327656f750636ab0d4bb324","url":"assets/js/17896441.81adb781.js"},{"revision":"c6df608955467b2888ef6d1464df250f","url":"assets/js/198089f0.a638d0e4.js"},{"revision":"bbc849b41695282f4937bbcfdd2bebc8","url":"assets/js/1a4e3797.10b50830.js"},{"revision":"9f368b0fb20f93edf7a5d55241dca67f","url":"assets/js/1be78505.d4280a2d.js"},{"revision":"82d2743659da58051c22f87459f0d5f2","url":"assets/js/1e65b0cc.1cf66ca2.js"},{"revision":"a614f44f4b30d24f273dfde868fffaf8","url":"assets/js/1f391b9e.9d72478e.js"},{"revision":"4a746c35c8134fd72cd6114ca6c82706","url":"assets/js/24b69a33.cd3b6135.js"},{"revision":"6122105924371807d128a074d7aca53d","url":"assets/js/26f02342.afa27a24.js"},{"revision":"ccfe1ce2abc080851a9ab8d8cc45a4a6","url":"assets/js/2868cdab.4408b22d.js"},{"revision":"c2c99c114fef9c358b004af39dd03080","url":"assets/js/29038a86.a0f68bc2.js"},{"revision":"40ed3c9b528d3312cc5cf4ad99a0ce25","url":"assets/js/295788ab.d5be7ed2.js"},{"revision":"b6ef3d3c230be33708c6502176dc2139","url":"assets/js/2c1e1cda.e8c06715.js"},{"revision":"15723543193b68b9139714d23af44fe9","url":"assets/js/2e9f4025.c440a7f4.js"},{"revision":"04f76b91a0d248a54bc7c065db3bfda0","url":"assets/js/2f216b64.be18fbd1.js"},{"revision":"c15a26fcbf95fc6f597d2b2ad9ca9816","url":"assets/js/2fd064e1.1f06ad85.js"},{"revision":"0d48ccf32a44bda85f23e483b80dde71","url":"assets/js/30a24c52.fe3d1282.js"},{"revision":"974cf227605480b4eb371fdd1eae3dc9","url":"assets/js/313c10d3.d5b82532.js"},{"revision":"f3d666b3ab17a26a20ad41f9bd824626","url":"assets/js/321baafb.ddbd56c2.js"},{"revision":"7659b05d785ba6b6b9dc410c5516b609","url":"assets/js/323e3613.f2060199.js"},{"revision":"5aaac397db428dc579f520b2f38fe6b9","url":"assets/js/325b4c62.d8ec8056.js"},{"revision":"e628f73705177195b553620dd0247354","url":"assets/js/3570154c.c37ee8d6.js"},{"revision":"0f2b1beeaa19ce1c0cf8a722aa9fbab5","url":"assets/js/3720c009.eccc510f.js"},{"revision":"1e4d005f0c387c89333854d2a7b39efb","url":"assets/js/393be207.b7746211.js"},{"revision":"88885ef479f56a39eea331c699af4e0d","url":"assets/js/3b693608.97aeb5cf.js"},{"revision":"dae1ba2099601ad08be023bba9381a12","url":"assets/js/3e6cc91f.05f7c8af.js"},{"revision":"5ed89f6fa836718069adfcdeea3bd262","url":"assets/js/4583d8d3.acaec57e.js"},{"revision":"8639eb22a06d4288d85603499530a07f","url":"assets/js/474d3107.b8e92cca.js"},{"revision":"f6fb667258ee6ce45b6622d69b6ccb0f","url":"assets/js/47c4aa67.1fea5069.js"},{"revision":"5ed6743230f32aba48d7ff4d03dd7f07","url":"assets/js/492a2ace.ae627938.js"},{"revision":"fd913fc11c8cdfb687dd0424990680e2","url":"assets/js/4c1f76dc.fa508b50.js"},{"revision":"7e0ed583ecbbee9dc98b697f79b2e916","url":"assets/js/4f9a846c.beafb1d4.js"},{"revision":"da55d32d6568752abc4d2ce92c0f75b4","url":"assets/js/5131.49d95ff5.js"},{"revision":"c7d6d45e7a69061d4ff208038263e71d","url":"assets/js/546fc57f.4f0ba1d2.js"},{"revision":"3f5b7aac93d49b5cf1c3ae136941906c","url":"assets/js/547d9d0e.81620ca4.js"},{"revision":"7b19faec3a81c66ea7042b89e89e41f5","url":"assets/js/5525.cf502a04.js"},{"revision":"91b7986b58676d0d5bb65eed8139a84f","url":"assets/js/55960ee5.f7f12d43.js"},{"revision":"fa1a8df8a19c6958989dc0762a35ccd3","url":"assets/js/59581207.0a8f331b.js"},{"revision":"811fb15a39c1b6b602d0dca0bed4666b","url":"assets/js/6167.37e73422.js"},{"revision":"b413bb6a9668ca0df75d2b003b77393c","url":"assets/js/6403.a44703d9.js"},{"revision":"3e4e8db554d14dcb922ee64b19026f1f","url":"assets/js/65a36639.93135880.js"},{"revision":"ffc7d485bb22325f328d58f59f32ab02","url":"assets/js/6875c492.14ede8d7.js"},{"revision":"bd359c99197e74726a913fb2a5fe9f7a","url":"assets/js/6d1047ab.af53178f.js"},{"revision":"ff1ff8288e14a6e301c9765a23db74e2","url":"assets/js/6d7197b8.eea301d1.js"},{"revision":"3b5632fa454632214fd808d32a2a5952","url":"assets/js/6e51a3ac.be05d919.js"},{"revision":"818ed75dc0e557072b5795802641ea0c","url":"assets/js/732d2357.f2b2cf23.js"},{"revision":"95e2150aff36a0374ffde70e5ac7f207","url":"assets/js/7792.04888220.js"},{"revision":"280e157c178163dd69821b85102bf4b1","url":"assets/js/7c3edcb6.912ee3a7.js"},{"revision":"c257bc8676fc036b88b7c9625015b1cf","url":"assets/js/7dfbeebb.ffddba1b.js"},{"revision":"4389e3977496d643510242ee6eb9a9f2","url":"assets/js/7f7f0193.ff74cdc7.js"},{"revision":"70e70929fc46ce278922530640c502f9","url":"assets/js/806240b1.e0f9fa4a.js"},{"revision":"5a8e9801b0039339b6f15b8fa18ed083","url":"assets/js/814f3328.9ec6d794.js"},{"revision":"1575c6b2025c7937d3dc8dfddee994a4","url":"assets/js/8443.159f986e.js"},{"revision":"f2af0b0fc66260833ed5de46dc9c48fc","url":"assets/js/87f26539.f8535051.js"},{"revision":"9d073ab04c45f8ccc86ca0e33c9d063b","url":"assets/js/8890ac7a.4caeb57c.js"},{"revision":"564ac8eca8a8f27b26fe496a31dac3e3","url":"assets/js/8eb4e46b.1732f51f.js"},{"revision":"95619db2f01bd09067ad0f2d4bd19f2c","url":"assets/js/913a335e.20c072a9.js"},{"revision":"7a4da2065349be5cf48a1009d8d1bb75","url":"assets/js/917b00f7.24d2c8c5.js"},{"revision":"c0cc5dc7dd2a3983742be96c9d0af0e3","url":"assets/js/923.8e01249f.js"},{"revision":"20d5c52d2f037266cea4ff20e605492c","url":"assets/js/92999a1c.e8449164.js"},{"revision":"a3294a688fad3238149881efb1ad968c","url":"assets/js/935f2afb.87ea9da1.js"},{"revision":"cd2542175a6aa10ab361aeeca05f694b","url":"assets/js/96056db4.90df3498.js"},{"revision":"bee291f2bb841534ee9105a0c9cce006","url":"assets/js/9727.8e150010.js"},{"revision":"7533c5d070e01af1ad2b2146c51a3d81","url":"assets/js/97f74fe5.7568c50e.js"},{"revision":"9a539cf3eec62ce437301e96e8d2b912","url":"assets/js/989dfd53.d257f613.js"},{"revision":"90f1fdf6599175120104983ea8756169","url":"assets/js/9c2086ba.3d8aaa81.js"},{"revision":"aa7e41c786cbfdab7e81a76d2df0800d","url":"assets/js/9cee6a8e.bfda3941.js"},{"revision":"d3a4fee87d1b358229c8e70c2fa2321f","url":"assets/js/a6aa9e1f.a8433ab1.js"},{"revision":"31bff4a47e38c1bb8ff94fe9e070626c","url":"assets/js/a7023ddc.807f34da.js"},{"revision":"c142a354377abdefd546b17d72b722f1","url":"assets/js/a740aca6.40b07cd2.js"},{"revision":"bfac744feb69af3b3b846037fe01e551","url":"assets/js/a77d2423.96488b81.js"},{"revision":"b151051a2708b042d8e7f565db5d0adc","url":"assets/js/a80da1cf.e20298dd.js"},{"revision":"93572212e361989085d3a0ffbbcee011","url":"assets/js/af172acd.700b58ba.js"},{"revision":"0e6ba4bc27c4d9195c029595e44c404d","url":"assets/js/affb306b.9e1963eb.js"},{"revision":"f19dfa336872b6c3d6f86ec105df8279","url":"assets/js/b075f059.53a405a4.js"},{"revision":"d9ad8a241ba6b061e4cb885f000c51c0","url":"assets/js/b2b02a3a.46a209a1.js"},{"revision":"02a71aad65b1dc5e22f87a1f42b5b368","url":"assets/js/b2b675dd.9f2c1095.js"},{"revision":"3c13aa4639cb46f9dac7e462363adcaa","url":"assets/js/b335d990.7526c059.js"},{"revision":"aa579fe51b59e068d05b931229f4069d","url":"assets/js/b9f35430.837a0dff.js"},{"revision":"8566189bd397775515feba90610ac4f7","url":"assets/js/c1d32765.7ce7fb0f.js"},{"revision":"9764fec3849d239a782af79455a508c0","url":"assets/js/c2343886.9fd47679.js"},{"revision":"f7f9c00171dfd23ddbdda0c464dabce6","url":"assets/js/c2e4ed6e.8666763c.js"},{"revision":"7f6f3857027412516ee98535bd461604","url":"assets/js/c4f5d8e4.c632d0c7.js"},{"revision":"c0d58fe7870c6df1f6b01231cb4b3f14","url":"assets/js/c7e645cd.e3dc91c7.js"},{"revision":"6f50fb02e3af90eef9e1289bc801529e","url":"assets/js/ccc49370.2aa00338.js"},{"revision":"b01c80ce71c1609b0032ccca6bbc38f6","url":"assets/js/cd71dd97.d58802a0.js"},{"revision":"64d9567fa2a950f605124e29866cb217","url":"assets/js/d181012a.e8c8abc3.js"},{"revision":"7600989e467ed11ca75a668dfa21204e","url":"assets/js/d610846f.7622790c.js"},{"revision":"425f17c1fcbebafa78d5e859987e5865","url":"assets/js/d93227b1.fbcd47f0.js"},{"revision":"a5535d5f2be34275cd947d1c35ce2bdb","url":"assets/js/e32489d2.c3c4d48a.js"},{"revision":"708499e90203f10264cd8bc81fa495cc","url":"assets/js/ece6f01b.2049d466.js"},{"revision":"31fd6b6a7259f8e49f31bf670b878c19","url":"assets/js/ee8bb330.3bd0cc65.js"},{"revision":"5a67e2b873e9639eb9ce0e81930256c6","url":"assets/js/efbfcd47.b605bddc.js"},{"revision":"aca1c4a9727cfbcf648a3f7003f3b5e3","url":"assets/js/f6ca0f89.ca79b932.js"},{"revision":"20239a7e7b7e55309922b7c4895775cb","url":"assets/js/f7ae7a07.d6ee96dc.js"},{"revision":"c2e70ebf88aa896cb711c0d9679dbf36","url":"assets/js/fa0c351d.81d732c7.js"},{"revision":"15e8afbb7fa21596fc107971c433ccfa","url":"assets/js/faafad80.dfa8cc14.js"},{"revision":"5f4512e0eee1049439ff13c1f6bd9b25","url":"assets/js/main.c49824b7.js"},{"revision":"f7d72e09920fa85a24405685571cda69","url":"assets/js/runtime~main.c750f007.js"},{"revision":"23cc411178c3bd961c13594214d11e72","url":"blog-archive/index.html"},{"revision":"4c4eac6751c3d0562f6a7e9f36f2a2e7","url":"blog/2021/08/29/信息源/index.html"},{"revision":"a4da518cf97385cdd514d738e02bbfc9","url":"blog/2021/08/30/全新生活空间设计/index.html"},{"revision":"981d419aa303b641fc455fe4c3e60eed","url":"blog/2021/08/30/如何制定计划？/index.html"},{"revision":"f695658720d5fe711910f7e42759004b","url":"blog/2021/09/01/个人数字空间/index.html"},{"revision":"c84471740a8df0001c4d3ad36d128645","url":"blog/2021/09/01/成功方法论/index.html"},{"revision":"666233f054fc331eb00673d14f7c6260","url":"blog/2021/09/02/完美生活/index.html"},{"revision":"4330b7ab3419d2780cb76b65c4a624b2","url":"blog/2021/09/12/学习之路/index.html"},{"revision":"74676a11ee34992a5c36982e8c11a71c","url":"blog/2021/09/12/社交牛逼症教程/index.html"},{"revision":"32d3062347bcfa85ee0084a0e6af9be5","url":"blog/2021/09/14/人生目标/index.html"},{"revision":"0cd7ad3542b93c1afff17fa9da4629a0","url":"blog/2021/09/17/未来的世界是怎样的？/index.html"},{"revision":"b1955fd5b70f695c268b23a0f413b31d","url":"blog/2021/10/10/价值定义、价值创造与价值分配/index.html"},{"revision":"ff9bdb81fc3d8ea75feba3dc35575e43","url":"blog/2021/10/11/API云平台/index.html"},{"revision":"386dc2692fba246234e5687093240844","url":"blog/2021/10/13/人生之意义/index.html"},{"revision":"fd5c55323a87cedfc503012c9382cf2d","url":"blog/2021/10/13/学会生活/index.html"},{"revision":"1e2d303613a00c54d2e35d7f0436ca88","url":"blog/2021/10/13/智能节点与智能网络/index.html"},{"revision":"359a8ca386ac2905e04f8c8cb52ce40f","url":"blog/2021/10/23/全新知识库-一种信息存储架构/index.html"},{"revision":"13323187d61ae25fbfa6d9a8cb0c0eca","url":"blog/2021/11/13/共产主义的漫谈式畅想/index.html"},{"revision":"8753dd2489c9049079b078323a88fe88","url":"blog/2021/11/13/练习的一般方法/index.html"},{"revision":"2af5289c6663f5d93db07e84c3cf618c","url":"blog/2021/11/13/解决问题的一般方法/index.html"},{"revision":"e928188284e7197255f9b4ca3c62b679","url":"blog/hello-world/index.html"},{"revision":"50d541700c40c14720223f63ed730300","url":"blog/how-to-build-this-website/index.html"},{"revision":"6bdd07a1e1aa82ad2b6c681db9a67c7a","url":"blog/index.html"},{"revision":"f01ac2f4ba979fd8b39b73bae5e79775","url":"blog/page/2/index.html"},{"revision":"4837e9d0a37133d6dc8f81361cd1da97","url":"blog/page/3/index.html"},{"revision":"d4bb2b493e735a9b35c5cd66895dfd41","url":"blog/tags/docusaurus/index.html"},{"revision":"3f3f6c3f40d34f61326d3ed422673996","url":"blog/tags/facebook/index.html"},{"revision":"4f396c5fa33a50f7d667894c884cd8f3","url":"blog/tags/hello/index.html"},{"revision":"f1cee93b08aa244f744778db3289864f","url":"blog/tags/index.html"},{"revision":"08b0764cc348190b4f6af2ef6c81c293","url":"blog/welcome/index.html"},{"revision":"6e525bc625b91012fe918a41afb74c3d","url":"docs-self/intro/index.html"},{"revision":"d37f53a659d79c54b7bf6bc6d54cd1a6","url":"docs-self/tags/index.html"},{"revision":"9b06b29b01317c7bf572abbef97e35c9","url":"docs/CloudOS/一种强大的新型富文档格式/index.html"},{"revision":"168af9811b9dbc4fa1b5b9890ab88537","url":"docs/CloudOS/开发计划/index.html"},{"revision":"a9721bba1b56c044e1a4117b3aea9103","url":"docs/CloudOS/整体设计/index.html"},{"revision":"c6efc68a9254f2bce8d3429bce7ef26b","url":"docs/CloudOS/文件浏览器/index.html"},{"revision":"fff6648820ab8a3df6466737c5efe4df","url":"docs/CloudOS/文件系统/index.html"},{"revision":"31a899474b780acb2f6170ba75e450a3","url":"docs/CloudOS/方法论/index.html"},{"revision":"8ae4b64efc5ce8a55371f199ccd7e151","url":"docs/CloudOS/桌面环境/index.html"},{"revision":"131203c0167f2893677fdebede185f0a","url":"docs/CloudOS/用户认证与权限管理/index.html"},{"revision":"e57d1a7456902a4d3e4ed047a480067a","url":"docs/CloudOS/目标/index.html"},{"revision":"4d90fc87dba3fd39dc17718f24d3e3ee","url":"docs/CloudOS/类vscode编辑器/index.html"},{"revision":"d42e99501357658fa399f719e97ebb4e","url":"docs/Devops/clickhouse/clickhouse双机集群配置/index.html"},{"revision":"c5302b9c868cba59d244d5c67487b24d","url":"docs/Devops/mysql/mysql-docker-主从-keepalived/index.html"},{"revision":"bb85797b38a189f2f52871ade7373f2c","url":"docs/Devops/postgresql/postgres-docker-主从配置/index.html"},{"revision":"4750360d4f31c4aaf2ad9c8bb02ecc50","url":"docs/Freehub/README/index.html"},{"revision":"fbec8a5878fdc8e0da916f68ed74d87a","url":"docs/intro/index.html"},{"revision":"038637f8c539dd54a0d8c670b1c86d5c","url":"docs/tags/index.html"},{"revision":"057f7c627be719dadd912979f68bcd3f","url":"docs/开发/map-layout-docs-body-测试文档，不知道在哪里1/index.html"},{"revision":"70cdd9ca88aa753f50a3c25058b1ca7a","url":"docs/微服务/Kubernetes/README/index.html"},{"revision":"55159adec9979ef6c93bc922da8c9bee","url":"docs/微服务/ServiceMesh/README/index.html"},{"revision":"61442892953aed490bfff41f5c5cac56","url":"docs/微服务/微服务API网关/index.html"},{"revision":"7af370d6e558091553f4153bcbbd1722","url":"docs/微服务/微服务架构设计/index.html"},{"revision":"26c9c4c4d18ea81a62f4758482046b79","url":"docs/微服务/微服务鉴权设计/README/index.html"},{"revision":"7dc98796da4401634f8049f0d7a3d773","url":"docs/记录/优秀的个人博客/index.html"},{"revision":"862c0ea7bc2dc3396747a0cb5a1e6744","url":"helloMarkdown/index.html"},{"revision":"599cb0218334ddf3237f1c0ee8933fb5","url":"helloReact/index.html"},{"revision":"ff7c0c19696cac578e699ce0dc57661d","url":"index.html"},{"revision":"ca78a18fcd1eecae1663e44af6c35684","url":"links/index.html"},{"revision":"e884b74a02f0fed2477ef92526fc975f","url":"manifest.json"},{"revision":"6d7ff88e3b77397e50b818a83c8d121e","url":"markdown-page/index.html"},{"revision":"e2e5453b0c24875ccadfe0ebf5536ef1","url":"readings/index.html"},{"revision":"6e2f3883ac4fd9b635893850f8a9ed76","url":"search-index.json"},{"revision":"f3ef67c71284a9f472a392bc4ffd7a4d","url":"search/index.html"},{"revision":"4cbe7144d4693178a0a3dbcb70ca7ebf","url":"support/index.html"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/docusaurus.png"},{"revision":"4343e07bf942aefb5f334501958fbc0e","url":"img/favicon.ico"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/logo.svg"},{"revision":"b9d9189ed8f8dd58e70d9f8b3f693b3e","url":"img/tutorial/docsVersionDropdown.png"},{"revision":"c14bff79aafafca0957ccc34ee026e2c","url":"img/tutorial/localeDropdown.png"},{"revision":"8d04d316f4d1777793ee773fcbf16cea","url":"img/undraw_docusaurus_mountain.svg"},{"revision":"3d3d63efa464a74e2befd1569465ed21","url":"img/undraw_docusaurus_react.svg"},{"revision":"932b535fc71feb29877bc4b9d708b1d0","url":"img/undraw_docusaurus_tree.svg"},{"revision":"7fa1a026116afe175cae818030d4ffc4","url":"img/uploads/docusaurus.png"},{"revision":"aa4fa2cdc39d33f2ee3b8f245b6d30d9","url":"img/uploads/logo.svg"}];
   const controller = new workbox_precaching__WEBPACK_IMPORTED_MODULE_0__.PrecacheController({
     fallbackToNetwork: true, // safer to turn this true?
   });
